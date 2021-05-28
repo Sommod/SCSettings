@@ -1,0 +1,48 @@
+name: SCSettings
+main: soulcraft.Friends
+version: 1.0
+authors: [Sommod]
+description: A Friend system for survival-based servers.
+
+commands:
+  survival:
+    usage: '§cError, use §b/survival help §cfor a list of commands.'
+    description: 'Opens a GUI menu displaying all your friends!'
+    aliases: [surv, s]
+    
+
+permissions:
+  survival.*:
+    default: op
+    description: 'Access to all Commands and Permissions'
+    children:
+      survival.use: true
+      survival.settings: true
+      survival.ignorechat: true
+      survival.override: true
+      survival.storage: true
+      survival.spy: true
+      
+  survival.use:
+    default: true
+    description: 'Allows having and accessing the Friends System'
+    
+  survival.ignorechat:
+    default: op
+    description: 'Allows ignoring the normal Chat System'
+    
+  survival.settings:
+    default: op
+    description: 'Allows editing and changing certain attributes of the plugin'
+    
+  survival.override:
+    default: op
+    description: 'Allows overriding anyones ignore chat command.'
+    
+  survival.storage:
+    default: op
+    description: 'Allows access to the Admin Storage'
+    
+  survival.spy:
+    default: op
+    description: 'Can see people who talk in a Friend chat system.'
