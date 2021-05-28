@@ -1,12 +1,12 @@
 name: SCSettings
-main: soulcraft.Friends
+main: com.soulcraft.SCSettings
 version: 1.0
 authors: [Sommod]
 description: A Friend system for survival-based servers.
 
 commands:
   survival:
-    usage: '§cError, use §b/survival help §cfor a list of commands.'
+    usage: 'ï¿½cError, use ï¿½b/survival help ï¿½cfor a list of commands.'
     description: 'Opens a GUI menu displaying all your friends!'
     aliases: [surv, s]
     

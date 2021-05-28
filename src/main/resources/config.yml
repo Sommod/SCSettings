@@ -42,6 +42,7 @@ friends:
   #  - BEDROCK
   #  - SPONGE
 
+
 # This handles the format for items sent as gifts, items
 # returned, and items that are in the ADMIN storage
 gui:
