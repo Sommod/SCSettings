@@ -1,0 +1,2 @@
+# SCSettings
+Survival Settings
