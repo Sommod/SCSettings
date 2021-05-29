@@ -63,6 +63,23 @@ public class SCSettingsManager {
 	 */
 	private void registerConfiguration() {
 		
+		if(!plugin.getDataFolder().exists())
+			plugin.getDataFolder().mkdir();
+		
+		// Ensures folders exists
+		File folder = new File(plugin.getDataFolder(), "Data");
+					
+		if(!folder.exists())
+			folder.mkdir();
+		folder = new File(plugin.getDataFolder(), "Data/Player Data");
+		
+		if(!folder.exists())
+			folder.mkdir();
+		folder = new File(plugin.getDataFolder(), "Data/Gui Data");
+		
+		if(!folder.exists())
+			folder.mkdir();
+		
 		// Grabs the stored file as an Input Stream
 		// Gets each line of InputStream and writes
 		// each byte to the config.yml file (toLoad)
