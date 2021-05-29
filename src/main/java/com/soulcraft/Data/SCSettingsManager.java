@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.util.logging.Level;
 
 import com.soulcraft.SCSettings;
+import com.soulcraft.Player.PlayerManager;
 
 /**
  * Contains all the manager-type classes. Initializes Any manager
@@ -23,6 +24,8 @@ public class SCSettingsManager {
 	private SCSettings plugin;
 	private final String[] header = new String[]{"################", "#+------------+#", "Initializing SCSettings..."};
 	private final String[] footer = new String[]{"SCSettings Active!", "#+------------+#", "################"};
+	
+	private PlayerManager playerManager;
 	
 	/**
 	 * Creates a new Manager object for the SCSettings plugin. This activates
@@ -92,5 +95,8 @@ public class SCSettingsManager {
 			e.printStackTrace();
 		}
 	}
+	
+	public SCSettings getPlugin() { return plugin; }
+	public PlayerManager getPlayerManager() { return playerManager; }
 
 }
