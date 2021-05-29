@@ -48,6 +48,12 @@ public class PlayerData implements Serializable {
 	public ChatSettings getChatSettings() { return chatSettings; }
 	
 	/**
+	 * Gets the OfflinePlayer object that is for this player data.
+	 * @return OfflinePlayer of this PlayerData
+	 */
+	public OfflinePlayer getPlayer() { return player; }
+	
+	/**
 	 * Checks if the given player is a friend.
 	 * @param player - Player to check
 	 * @return True - if player is friend
@@ -69,6 +75,12 @@ public class PlayerData implements Serializable {
 	 * @param player - Player to remove.
 	 */
 	public void removeFriend(OfflinePlayer player) { friends.remove(player); }
+	
+	/**
+	 * Gets a list of all friends of this player.
+	 * @return List of friends
+	 */
+	public List<OfflinePlayer> getAllFriends() { return friends; }
 	
 	/**
 	 * Clears the entire friends list.
