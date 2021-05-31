@@ -51,30 +51,6 @@ gui:
   # or below? TRUE sets the format above, FALSE, sets to below.
   display above: true
   
-  # Determines if the GUI system will fill any empty spots with
-  # the given item below.
-  fill empty:
-    use: false
-    item: GRAY_STAINED_GLASS_PANE
-    name: ' '
-    amount: 1
-    enchanted: false
-    lore:
-      - ' '
-     
-   # Creates a border of the given item within the GUI menu. Note
-   # that this and the above setting cannot both be used at the
-   # same time. If both are active, then this option will override
-   # and take affect first.
-   fill border:
-     use: true
-     item: GRAY_STAINED_GLASS_PANE
-     name: ' '
-     amount: 1
-     enchanted: false
-     lore:
-       - ' '
-  
   # This sets how the time will be displayed in the formats.
   # There are two options available, if an input is given that
   # is not one of the two options, then this will default to
