@@ -1,6 +1,8 @@
 package com.soulcraft.GUI;
 
-import org.bukkit.Bukkit;
+import java.io.File;
+import java.util.Map;
+
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -20,6 +22,7 @@ public abstract class AbstractMenu {
 
 	private Inventory inv;
 	private SCSettingsManager manager;
+	private Map<Integer, Button> buttons;
 	
 	/**
 	 * Initializes a new Inventory as well
@@ -29,14 +32,15 @@ public abstract class AbstractMenu {
 	 * then the this will auto-fill in the border
 	 * @param name - Name of Inventory
 	 */
-	public AbstractMenu(SCSettingsManager manager, String name) {
+	public AbstractMenu(SCSettingsManager manager, String name, File configFile) {
 		this.manager = manager;
-		inv = Bukkit.createInventory(null, 54, name.replace('&', '§'));
+		//TODO: Create Inventory and load buttons into map
 	}
 	
 	/**
-	 * Gets the stored Inventory objet\ct
-	 * @return Inventory
+	 * Gets the stored Inventory object This gets
+	 * the none formatted inventory.
+	 * @return Inventory of Menu
 	 */
 	protected Inventory getBaseInventory() { return inv; }
 	
@@ -61,9 +65,38 @@ public abstract class AbstractMenu {
 	protected SCSettingsManager getManager() { return manager; }
 	
 	/**
+	 * Checks if the given slot number contains a button.
+	 * @param slot - slot to check
+	 * @return True - if button
+	 */
+	public boolean isButton(int slot) { return buttons.containsKey(slot); }
+	
+	/**
+	 * Gets the button of the given slots number. If the slot given is
+	 * not a number, then this will return the Button ERROR.
+	 * @param slot - slot to get button
+	 * @return Button
+	 */
+	public Button getButton(int slot) { return buttons.get(slot); }
+	
+	/**
 	 * Opens the Inventory for the given player.
 	 * @param player
 	 */
 	public abstract void open(Player player);
+	
+	/**
+	 * Contains all the information for buttons that are applied
+	 * to items within the Inventory.
+	 *
+	 * @author Sommod
+	 * @version 1.0
+	 *
+	 */
+	public enum Button {
+		
+		MAIN_MENU, FRIENDS_MENU, ADD_MENU, SETTINGS_MENU, ERRROR;
+
+	}
 	
 }
