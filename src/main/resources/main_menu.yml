@@ -1,0 +1,61 @@
+#################
+# +-----------+ #
+# | Main Menu | #
+# +-----------+ #
+#################
+
+# This configuration file is for the main menu. This menu
+# can be deactivated, in which case the Friends Menu will
+# appear. If the 'back' button is used while in another
+# menu and this menu is deactivated, then the button will
+# default to the Friends menu.
+
+# Determines if the menu is to be used.
+use menu: true
+
+# Sets the size of the menu.
+size: 27
+
+# Creates either a border or fills all empty within the
+# menu of the given item.
+# fill type options => BORDER | FILL
+fill:
+  use: true
+  fill type: BORDER
+  item: GRAY_STAINED_GLASS_PANE
+  name: ' '
+  amount: 1
+  enchanted: false
+  lore:
+    - ' '
+
+# Sets the given slots of the inventory. These options
+# take priority over the fill/border option found within
+# the config.yml file. Meaning that the fill/border will
+# not replace the items found within this section.
+slots:
+  12:
+    item: GOLD_INGOT
+    amount: 1
+    name: '&aFriends'
+    lore:
+      - '&7&oOpen your friends list.'
+    enchant: false
+    button: FRIENDS_MENU
+    
+  14:
+    item: EMERALD
+    amount: 1
+    name: '&bAdd a friend'
+    lore:
+      - '&7&oAdd a person to your friends list.'
+    enchant: false
+    button: ADD_MENU
+    
+  16:
+    item: PAPER
+    amount: 1
+    name: '&cSettings Menu'
+    lore:
+      - '&7&oOpen your settings menu.'
+    button: SETTINGS_MENU
