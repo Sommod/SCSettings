@@ -1,11 +1,19 @@
 package com.soulcraft.GUI;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import org.bukkit.Material;
+import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 import com.soulcraft.Data.SCSettingsManager;
 
@@ -23,6 +31,8 @@ public abstract class AbstractMenu {
 	private Inventory inv;
 	private SCSettingsManager manager;
 	private Map<Integer, Button> buttons;
+	private ItemStack fillItem;
+	private boolean border;
 	
 	/**
 	 * Initializes a new Inventory as well
@@ -34,7 +44,77 @@ public abstract class AbstractMenu {
 	 */
 	public AbstractMenu(SCSettingsManager manager, String name, File configFile) {
 		this.manager = manager;
-		//TODO: Create Inventory and load buttons into map
+		buttons = new HashMap<Integer, Button>();
+		YamlConfiguration fileConfig = YamlConfiguration.loadConfiguration(configFile);
+		inv = manager.getPlugin().getServer().createInventory(null, fileConfig.getInt("size"), fileConfig.getString("name").replace('&', '§'));
+		
+		// Adds each item found in the slots of the config
+		for(String slotNum : fileConfig.getConfigurationSection("slots").getKeys(false)) {
+			ItemStack toSet = new ItemStack(Material.getMaterial(fileConfig.getString("slots." + slotNum + ".item")), fileConfig.getInt("slots." + slotNum + ".amount"));
+			ItemMeta meta = toSet.getItemMeta();
+			List<String> lore = new ArrayList<String>();
+			
+			meta.setDisplayName(fileConfig.getString("slots." + slotNum + ".name").replace('&', '§'));
+			fileConfig.getStringList("slots." + slotNum + ".lore").forEach(line -> { lore.add(line.replace('&', '§')); });
+			meta.setLore(lore);
+			
+			if(fileConfig.getBoolean("slots." + slotNum + ".enchanted")) {
+				meta.addEnchant(Enchantment.ARROW_DAMAGE, 1, false);
+				meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+			}
+			
+			if(fileConfig.isString("slots." + slotNum + ".button"))
+				buttons.put(Integer.parseInt(slotNum) - 1, Button.getButton(fileConfig.getString("slots." + slotNum + ".button")));
+			
+			toSet.setItemMeta(meta);
+			inv.setItem(Integer.parseInt(slotNum) - 1, toSet);
+		}
+		
+		// Gets the fill type and store the item to set.
+		if(fileConfig.getBoolean("fill.use")) {
+			border = fileConfig.getString("fill.fill type").equalsIgnoreCase("border");
+			ItemStack item = new ItemStack(Material.getMaterial(fileConfig.getString("fill.item")), fileConfig.getInt("fill.amount"));
+			ItemMeta meta = item.getItemMeta();
+			List<String> lore = new ArrayList<String>();
+			
+			meta.setDisplayName(fileConfig.getString("fill.name").replace('&', '§'));
+			fileConfig.getStringList("fill.lore").forEach(line -> { lore.add(line.replace('&', '§')); });
+			meta.setLore(lore);
+			
+			if(fileConfig.getBoolean("fill.enchanted")) {
+				meta.addEnchant(Enchantment.ARROW_DAMAGE, 1, false);
+				meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+			}
+			
+			item.setItemMeta(meta);
+			fillItem = item;
+			
+			// If the option is border, then the border
+			// is created and stored now.
+			if(border) {
+				// Top
+				for(int i = 0; i < 9; i++) {
+					if(inv.getItem(i) == null)
+						inv.setItem(i, fillItem);
+				}
+				
+				// Sides
+				for(int i = 17; i < inv.getSize(); i += 9) {
+					if(inv.getItem(i) == null)
+						inv.setItem(i, fillItem);
+					if(inv.getItem(i - 8) == null)
+						inv.setItem(i - 8, fillItem);
+				}
+				
+				// Bottom
+				for(int i = inv.getSize() - 9; i < inv.getSize(); i++) {
+					if(inv.getItem(i) == null)
+						inv.setItem(i, fillItem);
+				}
+				
+			}
+		} else
+			fillItem = null;
 	}
 	
 	/**
@@ -63,6 +143,37 @@ public abstract class AbstractMenu {
 	 * @return SCSettingsManager
 	 */
 	protected SCSettingsManager getManager() { return manager; }
+	
+	/**
+	 * Returns the given inventory with the fill item placed into all empty slots.
+	 * @param changedInv - Inventory with placed items
+	 * @return changedInv
+	 */
+	protected Inventory getFilledInventory(Inventory changedInv) {
+		
+		for(int i = 0; i < changedInv.getSize(); i++) {
+			if(changedInv.getItem(i) == null)
+				changedInv.setItem(i, fillItem);
+		}
+		
+		return changedInv;
+	}
+	
+	/**
+	 * Checks if the fill type is either a border or fill all
+	 * empty slots. If this is using a border type, then this
+	 * will return true.
+	 * @return True - if Border and not Fill
+	 */
+	public boolean isBorder() { return border; }
+	
+	/**
+	 * Checks if the menu is using any filling option. If the
+	 * menu does not contain an options, then this will return
+	 * false.
+	 * @return True - if using fill option
+	 */
+	public boolean isUsingFillOption() { return fillItem != null; }
 	
 	/**
 	 * Checks if the given slot number contains a button.
@@ -94,9 +205,24 @@ public abstract class AbstractMenu {
 	 *
 	 */
 	public enum Button {
+		MAIN_MENU, FRIENDS_MENU, ADD_MENU, SETTINGS_MENU, 
+		NEXT_PAGE, PREVIOUS_PAGE, ERRROR;
 		
-		MAIN_MENU, FRIENDS_MENU, ADD_MENU, SETTINGS_MENU, ERRROR;
-
+		/**
+		 * Gets the Button Enumeruation based on the String value
+		 * given. If the given string value is not found, then
+		 * this will return the ERROR button
+		 * @param value - String name of button
+		 * @return Button
+		 */
+		public static Button getButton(String value) {
+			for(Button button : Button.values()) {
+				if(button.toString().equals(value))
+					return button;
+			}
+			
+			return ERRROR;
+		}
 	}
 	
 }
