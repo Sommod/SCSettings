@@ -1,0 +1,30 @@
+This file contains all the information for the plugin. You can edit
+this file as you see fit. If you need a new file, just delete this
+file and reload the plugin.
+
+
+Commands: < > - Required | [ ] Optional
+/SCSurvival - Displays Version information
+/SCSurvival Help [Command] - Lists all commands or show command information
+/SCSurvival Settings <Setting> - Toggles the given setting
+/SCSurvival list Settings - Lists all the available settings that can be changed
+/SCSurvival list Friends - Lists all Friends
+/SCSurvival send <player> - Sends the item in hand to the given friend
+/SCSurvival acceptreward <# | all> - Accepts gifts
+/SCSurvival declinereward <# | all> - Declines Gifts
+/SCSurvival add <player> - Sends a friend request to the given player
+/SCSurvival remove <player> - Removes the given player as a friend
+/SCSurvival money <amount> - Gets s banknote of the specified amount
+/SCSurvival storage <#> - Gets the item from the Admin Storage
+/SCSurvival Reload - Reloads the plugin
+
+
+Permissions:
+scsettings.* - Access to all permission
+scsettings.use - Allows using the plugin.
+scsettings.ignorechat - Allows toggling ignoring chat.
+scsettings.allowrequests - Toggle allowing friend requests
+scsettings.deathmessages - Toggle seeing death messages.
+scsettings.friendjoin - Toggle seeing friends join
+scsettings.override - Overrides the ignore chat option.
+scsettings.storage - Allows access to the Admin Storage
