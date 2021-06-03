@@ -5,10 +5,10 @@ authors: [Sommod]
 description: A Friend system for survival-based servers.
 
 commands:
-  survival:
+  scsurvival:
     usage: '§cError, use §b/survival help §cfor a list of commands.'
     description: 'Opens a GUI menu displaying all your friends!'
-    aliases: [surv, s]
+    aliases: [survival, surv, s]
     
 
 permissions:
@@ -17,7 +17,9 @@ permissions:
     description: 'Access to all Commands and Permissions'
     children:
       scsettings.use: true
-      scsettings.settings: true
+      scsettings.allowrequests: true
+      scsettings.friendjoin: true
+      scsettings.deathmessages: true
       scsettings.ignorechat: true
       scsettings.override: true
       scsettings.storage: true
@@ -30,9 +32,17 @@ permissions:
     default: op
     description: 'Allows ignoring the normal Chat System'
     
-  scsettings.settings:
+  scsettings.allowrequests:
     default: op
-    description: 'Allows editing and changing certain attributes of yourself'
+    description: 'Allows editing and changing the ability to receive friend requests.'
+    
+  scsettings.friendjoin:
+    default: op
+    description: 'Can toggle the ability to see when a friend joins the server'
+    
+  scsettings.deathmessages:
+    default: op
+    description: 'Toggles seeing Death Messages.'
     
   scsettings.override:
     default: op
