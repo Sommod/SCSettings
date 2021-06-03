@@ -67,25 +67,31 @@ public class SCSettingsManager {
 			plugin.getDataFolder().mkdir();
 		
 		// Ensures folders exists
-		File folder = new File(plugin.getDataFolder(), "Data");
+		File file = new File(plugin.getDataFolder(), "Data");
 					
-		if(!folder.exists())
-			folder.mkdir();
-		folder = new File(plugin.getDataFolder(), "Data/Player Data");
+		if(!file.exists())
+			file.mkdir();
+		file = new File(plugin.getDataFolder(), "Data/Player Data");
 		
-		if(!folder.exists())
-			folder.mkdir();
-		folder = new File(plugin.getDataFolder(), "Data/Gui Data");
+		if(!file.exists())
+			file.mkdir();
+		file = new File(plugin.getDataFolder(), "Data/Gui Data");
 		
-		if(!folder.exists())
-			folder.mkdir();
+		if(!file.exists())
+			file.mkdir();
 		
-		// Grabs the stored file as an Input Stream
-		// Gets each line of InputStream and writes
-		// each byte to the config.yml file (toLoad)
+		writeFile(plugin.getClass().getResourceAsStream("config.yml"), new File(plugin.getDataFolder(), "config.yml"));
+		writeFile(plugin.getClass().getResourceAsStream("add_friend.yml"), new File(plugin.getDataFolder(), "Data/Gui Data/Add Friend.yml"));
+		writeFile(plugin.getClass().getResourceAsStream("friend_request.yml"), new File(plugin.getDataFolder(), "Data/Gui Data/Friend Request.yml"));
+		writeFile(plugin.getClass().getResourceAsStream("main_menu.yml"), new File(plugin.getDataFolder(), "Data/Gui Data/Main Menu.yml"));
+	}
+	
+	// Grabs the stored file as an Input Stream
+	// Gets each line of InputStream and writes
+	// each byte to the config.yml file (toLoad)
+	private void writeFile(InputStream fis, File toLoad) {
 		try {
-			InputStream fis = plugin.getClass().getResourceAsStream("/config.yml");
-			File toLoad = new File(plugin.getDataFolder(), "config.yml");
+			toLoad.createNewFile();
 			
 			if(!plugin.getDataFolder().exists())
 				plugin.getDataFolder().mkdir();
@@ -108,11 +114,10 @@ public class SCSettingsManager {
 			fos.close();
 			
 		} catch (IOException e) {
-			plugin.getLogger().log(Level.SEVERE, "Error: Could not Load config data into ../plugins/SCSettings/config.yml file.");
+			plugin.getLogger().log(Level.SEVERE, "Error: Could not Load config data into the config file.");
 			e.printStackTrace();
 		}
-	}
-	
+	}	
 	public SCSettings getPlugin() { return plugin; }
 	public PlayerManager getPlayerManager() { return playerManager; }
 
