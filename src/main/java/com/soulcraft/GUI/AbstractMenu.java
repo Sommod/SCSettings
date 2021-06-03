@@ -46,7 +46,7 @@ public abstract class AbstractMenu {
 		this.manager = manager;
 		buttons = new HashMap<Integer, Button>();
 		YamlConfiguration fileConfig = YamlConfiguration.loadConfiguration(configFile);
-		inv = manager.getPlugin().getServer().createInventory(null, fileConfig.getInt("size"), fileConfig.getString("name").replace('&', '§'));
+		inv = manager.getPlugin().getServer().createInventory(null, fileConfig.isInt("size") ? fileConfig.getInt("size") : 54, fileConfig.getString("name").replace('&', '§'));
 		
 		// Adds each item found in the slots of the config
 		for(String slotNum : fileConfig.getConfigurationSection("slots").getKeys(false)) {
