@@ -1,0 +1,74 @@
+##################
+# +------------+ #
+# | Add Friend | #
+# +------------+ #
+##################
+
+# A menu that displays a list of people who have played on the server.
+# In the menu, people can add, decline or accept friend requests.
+
+# Determines if the menu is to be used.
+use menu: true
+
+# Sets the name of the menu.
+name: '&cAdd Friend'
+
+# Sets the size of the menu.
+size: 54
+
+# Creates either a border or fills all empty within the
+# menu of the given item.
+# fill type options => BORDER | FILL
+fill:
+  use: true
+  fill type: BORDER
+  item: GRAY_STAINED_GLASS_PANE
+  name: ' '
+  amount: 1
+  enchanted: false
+  lore:
+    - ' '
+
+# Sets the given slots of the inventory. These options
+# take priority over the fill/border option found within
+# the config.yml file. Meaning that the fill/border will
+# not replace the items found within this section.
+slots:
+  46:
+    item: NETHER_STAR
+    amount: 1
+    name: '&bBack to Main Menu'
+    lore:
+      - ' '
+    enchant: false
+    button: MAIN_MENU
+  
+  47:
+    item: DIAMOND
+    amount: 1
+    name: '&6View Friend Requests'
+    lore:
+      - '&7View all individuals that have'
+      - '&7sent you a friend request'
+    enchanted: false
+    button: FRIEND_REQUEST_MENU
+    
+  53:
+    item: ARROW
+    amount: 1
+    name: '&7&oPrevious Page'
+    lore:
+      - ' '
+    enchant: false
+    button: PREVIOUS_PAGE
+    
+  54:
+    item: ARROW
+    amount: 1
+    name: '&7&oNext Page'
+    lore:
+      - ' '
+    button: NEXT_PAGE
+    
+    
+# End Transmission...
