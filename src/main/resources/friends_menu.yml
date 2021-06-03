@@ -1,0 +1,59 @@
+####################
+# +--------------+ #
+# | Friends Menu | #
+# +--------------+ #
+####################
+
+# Sets the name of the menu.
+name: '&cFriends'
+
+# Sets the size of the menu.
+size: 54
+
+# Creates either a border or fills all empty within the
+# menu of the given item.
+# fill type options => BORDER | FILL
+fill:
+  use: true
+  fill type: BORDER
+  item: GRAY_STAINED_GLASS_PANE
+  name: ' '
+  amount: 1
+  enchanted: false
+  lore:
+    - ' '
+
+# Sets the given slots of the inventory. These options
+# take priority over the fill/border option found within
+# the config.yml file. Meaning that the fill/border will
+# not replace the items found within this section.
+slots:
+  49:
+    item: ARROW
+    amount: 1
+    name: '&7Previous Page'
+    lore:
+      - ' '
+    enchant: false
+    button: PREVIOUS_PAGE
+    
+  50:
+    item: NETHER_STAR
+    amount: 1
+    name: '&bBack to Main Menu'
+    lore:
+      - ' '
+    enchant: false
+    button: MAIN_MENU
+    
+  51:
+    item: ARROW
+    amount: 1
+    name: '&7Next Page'
+    lore:
+      - ' '
+    enchant: false
+    button: NEXT_PAGE
+    
+    
+# End Transmission...
