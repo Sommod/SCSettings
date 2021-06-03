@@ -1,7 +1,10 @@
 package com.soulcraft.Commands;
 
+import java.io.File;
+
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 
 import com.soulcraft.Data.SCSettingsManager;
@@ -85,6 +88,12 @@ public abstract class CommandManger {
 	 * @return True - if CommandSender is console.
 	 */
 	protected boolean isConsole() { return console != null; }
+	
+	/**
+	 * Gets the YamlConfiguration of the plugin.
+	 * @return YamlConfiguration
+	 */
+	protected YamlConfiguration getConfig() { return YamlConfiguration.loadConfiguration(new File(manager.getPlugin().getDataFolder(), "config.yml")); }
 	
 	/**
 	 * This method is ran on the creation of this class each time.
