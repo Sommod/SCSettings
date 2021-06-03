@@ -85,17 +85,23 @@ public class AddFriend extends AbstractMenu {
 			}
 		}
 		
-		if(page != 1) {
-			for(int i = 0; i < player.getOpenInventory().getTopInventory().getSize(); i++) {
-				if(player.getOpenInventory().getTopInventory().getItem(i) == null)
-					player.getOpenInventory().getTopInventory().setItem(i, getFillItem());
+		if(isUsingFillOption() && !isBorder()) {
+			if(page != 1) {
+				for(int i = 0; i < player.getOpenInventory().getTopInventory().getSize(); i++) {
+					if(player.getOpenInventory().getTopInventory().getItem(i) == null)
+						player.getOpenInventory().getTopInventory().setItem(i, getFillItem());
+				}
 			}
 		}
 		
 		if(page == 1) {
 			player.closeInventory();
 			playerPage.put(player, 1);
-			player.openInventory(getFilledInventory(toChange));
+			
+			if(isUsingFillOption() && !isBorder())
+				toChange = getFilledInventory(toChange);
+			
+			player.openInventory(toChange);
 		}
 	}
 	

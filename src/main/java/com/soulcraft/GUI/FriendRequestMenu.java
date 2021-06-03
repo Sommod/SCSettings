@@ -49,6 +49,9 @@ public class FriendRequestMenu extends AbstractMenu {
 			toOpen.setItem(i, head);
 		}
 		
+		if(isUsingFillOption() && !isBorder())
+			toOpen = getFilledInventory(toOpen);
+		
 		player.closeInventory();
 		player.openInventory(toOpen);
 	}
