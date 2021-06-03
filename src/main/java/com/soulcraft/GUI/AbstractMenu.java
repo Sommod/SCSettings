@@ -191,6 +191,12 @@ public abstract class AbstractMenu {
 	public Button getButton(int slot) { return buttons.get(slot); }
 	
 	/**
+	 * Gets the item that is to fill an inventory.
+	 * @return ItemStack
+	 */
+	protected ItemStack getFillItem() { return fillItem; }
+	
+	/**
 	 * Opens the Inventory for the given player.
 	 * @param player
 	 */
@@ -206,7 +212,8 @@ public abstract class AbstractMenu {
 	 */
 	public enum Button {
 		MAIN_MENU, FRIENDS_MENU, ADD_MENU, SETTINGS_MENU, 
-		NEXT_PAGE, PREVIOUS_PAGE, ERRROR;
+		NEXT_PAGE, PREVIOUS_PAGE, FRIEND_REQUEST_MENU,
+		DECLINE_ALL, ACCEPT_ALL, ERRROR;
 		
 		/**
 		 * Gets the Button Enumeruation based on the String value
