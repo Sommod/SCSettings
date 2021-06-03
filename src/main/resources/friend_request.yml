@@ -11,9 +11,6 @@
 # each one individually and reload the page, or click
 # on the accept all button.
 
-# Determines if the menu is to be used.
-use menu: true
-
 # Sets the name of the menu.
 name: '&cFriend Requests'
 

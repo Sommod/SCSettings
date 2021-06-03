@@ -9,9 +9,6 @@
 # be changed. Every other aspect of the menu is still
 # available.
 
-# Determines if the menu is to be used.
-use menu: true
-
 # Sets the name of the menu.
 name: '&cSend Gifts'
 

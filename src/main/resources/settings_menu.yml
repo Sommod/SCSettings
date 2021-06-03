@@ -9,9 +9,6 @@
 # access to change certain Chat-Type
 # settings.
 
-# Determines if the menu is to be used.
-use menu: true
-
 # Sets the name of the menu.
 name: '&cSettings Menu'
 

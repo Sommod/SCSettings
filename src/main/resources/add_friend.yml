@@ -7,9 +7,6 @@
 # A menu that displays a list of people who have played on the server.
 # In the menu, people can add, decline or accept friend requests.
 
-# Determines if the menu is to be used.
-use menu: true
-
 # Sets the name of the menu.
 name: '&cAdd Friend'
 
