@@ -49,8 +49,10 @@ public class AddFriend extends AbstractMenu {
 		// Used to clear inventory if not page 1
 		if(page != 1) {
 			for(int i = 10, k = ((page - 1) * 28); i < getBaseInventory().getSize() - 10 && k < allPlayers.size(); i++, k++) {
-				if((i + 1) % 9 == 0)
-					i += 2;
+				if((i + 1) % 9 == 0) {
+					i++;
+					continue;
+				}
 				
 				player.getOpenInventory().getTopInventory().setItem(i, null);
 			}
@@ -83,10 +85,17 @@ public class AddFriend extends AbstractMenu {
 			}
 		}
 		
+		if(page != 1) {
+			for(int i = 0; i < player.getOpenInventory().getTopInventory().getSize(); i++) {
+				if(player.getOpenInventory().getTopInventory().getItem(i) == null)
+					player.getOpenInventory().getTopInventory().setItem(i, getFillItem());
+			}
+		}
+		
 		if(page == 1) {
 			player.closeInventory();
 			playerPage.put(player, 1);
-			player.openInventory(toChange);
+			player.openInventory(getFilledInventory(toChange));
 		}
 	}
 	
