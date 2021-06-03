@@ -13,6 +13,9 @@
 # Determines if the menu is to be used.
 use menu: true
 
+# Sets the name of the menu.
+name: '&cMain Menu'
+
 # Sets the size of the menu.
 size: 27
 
