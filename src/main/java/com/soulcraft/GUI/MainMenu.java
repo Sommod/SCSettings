@@ -3,6 +3,7 @@ package com.soulcraft.GUI;
 import java.io.File;
 
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.Inventory;
 
 import com.soulcraft.Data.SCSettingsManager;
 
@@ -22,6 +23,13 @@ public class MainMenu extends AbstractMenu {
 
 	@Override
 	public void open(Player player) {
+		if(isUsingFillOption() && !isBorder()) {
+			Inventory toOpen = getBaseInventory();
+			toOpen = getFilledInventory(toOpen);
+			
+			player.closeInventory();
+			player.openInventory(toOpen);
+		}
 	}
 
 }
