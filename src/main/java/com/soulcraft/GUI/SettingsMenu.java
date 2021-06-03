@@ -29,7 +29,7 @@ public class SettingsMenu extends AbstractMenu {
 
 	private ItemStack deathMessage, joinFriend, allowRequests, ignorechat;
 	
-	public SettingsMenu(SCSettingsManager manager, String name, File configFile) {
+	public SettingsMenu(SCSettingsManager manager, String name) {
 		super(manager, name, new File(manager.getPlugin().getDataFolder(), "Data/Gui Data/Settings Menu.yml"));
 		initItems();
 	}
@@ -170,6 +170,9 @@ public class SettingsMenu extends AbstractMenu {
 		
 		display = new ItemStack(pData.getChatSettings().isIgnoringGlobalChat() ? Material.GREEN_DYE : Material.GRAY_DYE);
 		toOpen.setItem(22, display);
+		
+		if(isUsingFillOption() && !isBorder())
+			toOpen = getFilledInventory(toOpen);
 		
 		player.closeInventory();
 		player.openInventory(toOpen);
