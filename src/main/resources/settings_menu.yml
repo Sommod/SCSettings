@@ -1,0 +1,88 @@
+#####################
+# +---------------+ #
+# | Settings Menu | #
+# +---------------+ #
+#####################
+
+# This contains information used in the
+# Settings menu that each player will
+# access to change certain Chat-Type
+# settings.
+
+# Determines if the menu is to be used.
+use menu: true
+
+# Sets the name of the menu.
+name: '&cSettings Menu'
+
+# Sets the size of the menu.
+size: 54
+
+# Creates either a border or fills all empty within the
+# menu of the given item.
+# fill type options => BORDER | FILL
+fill:
+  use: true
+  fill type: BORDER
+  item: GRAY_STAINED_GLASS_PANE
+  name: ' '
+  amount: 1
+  enchanted: false
+  lore:
+    - ' '
+
+# This determines the items that will appear
+# in the Settings menu. If an item is not
+# found within this configuration file, then
+# a default item will be generated.
+items:
+  death messages:
+    item: OAK_SIGN
+    amount: 1
+    name: '&bDeath Messages'
+    lore:
+      - '&7Change the setting from either'
+      - '&7Enabling or Disabling Death Messages.'
+    enchanted: false
+  
+  friend join notify:
+    item: EMERALD
+    amount: 1
+    name: '&bFriend Join Notification'
+    lore:
+      - '&7Change whether you are notified when'
+      - '&7a friend joins the server.
+    enchanted: false
+    
+  allow requests:
+    item: DIAMOND
+    amount: 1
+    name: '&bFriend Requests'
+    lore:
+      - '&7Enable / Disable the ability for'
+      - '&7players to send you a friend request.'
+    enchanted: false
+    
+  ignore chat:
+    item: PAPER
+    amount: 1
+    name: '&bIgnore Chat'
+    lore:
+      - '&7Enable / Disable the ability to'
+      - '&7see the Global Chat.'
+
+# Sets the given slots of the inventory. These options
+# take priority over the fill/border option found within
+# the config.yml file. Meaning that the fill/border will
+# not replace the items found within this section.
+slots:
+  50:
+    item: NETHER_STAR
+    amount: 1
+    name: '&bBack to Main Menu'
+    lore:
+      - ' '
+    enchant: false
+    button: MAIN_MENU
+    
+# End Transmission...
