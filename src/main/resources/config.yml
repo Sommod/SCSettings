@@ -41,6 +41,10 @@ friends:
   #blacklisted items:
   #  - BEDROCK
   #  - SPONGE
+  
+  # Sets the message that will be sent when the given person
+  # does not have permission to perform the action or command
+  no permission: '&e&lPERMS &8» &cSorry, you are lacking in the Permission Department to perform that action.'
 
 
 # This handles the format for items sent as gifts, items
