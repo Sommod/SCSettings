@@ -27,6 +27,7 @@ public class PlayerData implements Serializable {
 	
 	private ChatSettings chatSettings;
 	private transient List<OfflinePlayer> friends;
+	private transient List<OfflinePlayer> friendRequests;
 	private transient OfflinePlayer player;
 
 	/**
@@ -39,6 +40,8 @@ public class PlayerData implements Serializable {
 		this.player = player;
 		chatSettings = new ChatSettings();
 		friends = new ArrayList<OfflinePlayer>();
+		friendRequests = new ArrayList<OfflinePlayer>();
+		
 	}
 	
 	/**
@@ -87,6 +90,42 @@ public class PlayerData implements Serializable {
 	 */
 	public void clearFriends() { friends.clear(); }
 	
+	/**
+	 * Adds the given player to the list of individuals that have
+	 * requested to be friends with this person.
+	 * @param player - Player attempting to be friends
+	 */
+	public void addFriendRequest(OfflinePlayer player) {
+		if(!friendRequests.contains(player))
+			friendRequests.add(player);
+	}
+	
+	/**
+	 * Removes the given player from the list of people
+	 * attempting to be a friend.
+	 * @param player - Player to remove
+	 */
+	public void removeFriendRequest(OfflinePlayer player) { friendRequests.remove(player); }
+	
+	/**
+	 * Checks if the player is on the list of people wanting
+	 * to be a friend.
+	 * @param player - Player to check
+	 * @return True - if player is attempting to be friend
+	 */
+	public boolean isFriendRequest(OfflinePlayer player) { return friendRequests.contains(player); }
+	
+	/**
+	 * Clears the list of friend requests.
+	 */
+	public void clearFriendRequests() { friendRequests.clear(); }
+	
+	/**
+	 * Gets the entire list of friend requests.
+	 * @return List of friend requests
+	 */
+	public List<OfflinePlayer> getAllFriendRequests() { return friendRequests; }
+	
 	// Custom Write Serialization for PlayerData
 	private void writeObject(ObjectOutputStream oos) throws IOException {
 		oos.defaultWriteObject();
@@ -94,6 +133,11 @@ public class PlayerData implements Serializable {
 		
 		friends.forEach(off -> { ids.add(off.getUniqueId()); });
 		oos.writeObject(ids);
+		ids.clear();
+		
+		friendRequests.forEach(off -> { ids.add(off.getUniqueId()); });
+		oos.writeObject(ids);
+		
 		oos.writeObject(player.getUniqueId());
 	}
 	
@@ -102,7 +146,9 @@ public class PlayerData implements Serializable {
 	private void readObject(ObjectInputStream ois) throws ClassNotFoundException, IOException {
 		ois.defaultReadObject();
 		friends = new ArrayList<OfflinePlayer>();
-		((List<UUID>) ois.readObject()).forEach( uuid -> { friends.add(Bukkit.getServer().getOfflinePlayer(uuid)); });
+		friendRequests = new ArrayList<OfflinePlayer>();
+		((List<UUID>) ois.readObject()).forEach(uuid -> { friends.add(Bukkit.getServer().getOfflinePlayer(uuid)); });
+		((List<UUID>) ois.readObject()).forEach(uuid -> { friends.add(Bukkit.getServer().getOfflinePlayer(uuid)); });
 		player = Bukkit.getServer().getOfflinePlayer((UUID) ois.readObject());
 	}
 }
