@@ -22,7 +22,7 @@ public class GiftMenu extends AbstractMenu {
 	public GiftMenu(SCSettingsManager manager, String name, File configFile) {
 		super(manager, name, configFile);
 	}
-
+	
 	@Override
 	public void open(Player player) {
 		Inventory toOpen = getBaseInventory();
