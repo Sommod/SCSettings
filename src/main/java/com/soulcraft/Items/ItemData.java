@@ -47,6 +47,18 @@ public class ItemData implements Serializable {
 	}
 	
 	/**
+	 * This is not used normally, this handles the backup saving of this data.
+	 */
+	@Deprecated
+	public ItemData(ItemStack item, OfflinePlayer gifter, OfflinePlayer receiver, long expireTime, int location) {
+		this.item = item;
+		this.gifter = gifter;
+		this.receiver = receiver;
+		this.expireTime = expireTime;
+		this.location = location > 0 && location < 4 ? location : 1;
+	}
+	
+	/**
 	 * Gets the item stored within this class.
 	 * @return ItemStack
 	 */
@@ -113,6 +125,13 @@ public class ItemData implements Serializable {
 	 * @return True - if time is past the given time
 	 */
 	public boolean isExpired() { return System.currentTimeMillis() >= expireTime && expireTime != -1; }
+	
+	/**
+	 * Gets the long value of the time in which the timer
+	 * for this item will expire
+	 * @return long
+	 */
+	public long getExpireTime() { return expireTime; }
 	
 	/**
 	 * Gets the person sending the gift.
