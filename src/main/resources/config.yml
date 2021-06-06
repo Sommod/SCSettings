@@ -29,7 +29,8 @@ friends:
   collect time limit: '12H'
   
   # This puts forth the time in which an item will be stored
-  # within the Admin Stroage Container.
+  # within the Admin Stroage Container. To remove the time
+  # limit, put 'none' as the time limit.
   storage time limit: '7D'
   
   # Sets forth a list of items that cannot be sent as a gift.
@@ -50,10 +51,6 @@ friends:
 # This handles the format for items sent as gifts, items
 # returned, and items that are in the ADMIN storage
 gui:
-  
-  # Should the given formats be displayed above the item lore,
-  # or below? TRUE sets the format above, FALSE, sets to below.
-  display above: true
   
   # This sets how the time will be displayed in the formats.
   # There are two options available, if an input is given that
