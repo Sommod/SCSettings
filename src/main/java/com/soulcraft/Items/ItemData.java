@@ -24,6 +24,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 public class ItemData implements Serializable {
 
 	private static final long serialVersionUID = -5430632964146147939L;
+	private UUID id;
 	
 	private transient ItemStack item;
 	private transient OfflinePlayer gifter;
@@ -44,18 +45,20 @@ public class ItemData implements Serializable {
 		this.receiver = receiver;
 		this.expireTime = expireTime;
 		location = 1;
+		id = UUID.randomUUID();
 	}
 	
 	/**
 	 * This is not used normally, this handles the backup saving of this data.
 	 */
 	@Deprecated
-	public ItemData(ItemStack item, OfflinePlayer gifter, OfflinePlayer receiver, long expireTime, int location) {
+	public ItemData(ItemStack item, OfflinePlayer gifter, OfflinePlayer receiver, long expireTime, int location, UUID id) {
 		this.item = item;
 		this.gifter = gifter;
 		this.receiver = receiver;
 		this.expireTime = expireTime;
 		this.location = location > 0 && location < 4 ? location : 1;
+		this.id = id;
 	}
 	
 	/**
@@ -88,6 +91,8 @@ public class ItemData implements Serializable {
 			lore.add("§7--------------------------------");
 			lore.addAll(meta.getLore());
 		}
+		
+		lore.add("§0id: §0§k" + id.toString());
 		
 		meta.setLore(lore);
 		display.setItemMeta(meta);
@@ -144,6 +149,21 @@ public class ItemData implements Serializable {
 	 * @return OfflinePlayer Object of receiver
 	 */
 	public OfflinePlayer getReceiver() { return receiver; }
+	
+	/**
+	 * Gets the Unique ID for this ItemData. This is used to
+	 * determine what item was clicked on in the menu.
+	 * @return UUID
+	 */
+	public UUID getID() { return id; }
+	
+	/**
+	 * Quick method for checking if the given UUID is the same
+	 * as the one stored within this ItemData Class.
+	 * @param id - UUID to check
+	 * @return True - if UUID are both the same
+	 */
+	public boolean isItemData(UUID id) { return this.id.equals(id); }
 	
 	// Custom Serialization
 	private void writeObject(ObjectOutputStream oos) throws IOException {
