@@ -18,7 +18,8 @@ public enum Perms {
 	/** <b>scsettings.storage</b> */STORAGE("storage"),
 	/** <b>scsettings.allowrequests</b> */ALLOW_REQUESTS("allowrequests"),
 	/** <b>scsettings.friendjoin */FRIEND_JOIN("friendjoin"),
-	/** <b>scsettings.deathmessages</b> */DEATH_MESSAGES("deathmessages");
+	/** <b>scsettings.deathmessages</b> */DEATH_MESSAGES("deathmessages"),
+	/** <b>scsettings.reload</b> */RELOAD("reload");
 	
 	private Permission permission;
 	
