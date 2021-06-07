@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
@@ -80,14 +81,17 @@ public class ItemData implements Serializable {
 		if(location == 1) {
 			lore.add("§6Left Click: §aAccept");
 			lore.add("§6Right Click: §cDecline");
+			lore.add("§6Time Left: §f" + formatTime());
 			lore.add("§7------------------------");
 			lore.addAll(meta.getLore());
-		} else if(location == 2)
+		} else if(location == 2) {
 			lore = meta.getLore();
-		else {
+			lore.add("§6Time Left: §f" + formatTime());
+		} else {
 			lore.add("§6Left Click: §aReturn Item");
 			lore.add("§6Right Click: §cDelete Item");
 			lore.add("§6Middle Button: §bTake Item");
+			lore.add("§6Time Left: §f" + formatTime());
 			lore.add("§7--------------------------------");
 			lore.addAll(meta.getLore());
 		}
@@ -100,15 +104,30 @@ public class ItemData implements Serializable {
 		return display;
 	}
 	
+	// Converts the given time left into readable time
+	private String formatTime() {
+		String time = "";
+		long timeLeft = expireTime - System.currentTimeMillis();
+		long days = TimeUnit.MILLISECONDS.toDays(timeLeft);
+		long hrs = TimeUnit.MILLISECONDS.toHours(timeLeft) % 24;
+		long mins = TimeUnit.MILLISECONDS.toMinutes(timeLeft) % 60;
+		long secs = TimeUnit.MILLISECONDS.toSeconds(timeLeft) % 60;
+		
+		time = (days < 10 ? "0" + days + ":" : days + ":") +
+			   (hrs < 10 ? "0" + hrs + ":" : hrs + ":") +
+			   (mins < 10 ? "0" + mins + ":" : mins + ":") +
+			   (secs < 10 ? "0" + secs : secs + "");
+		
+		return time;
+	}
+	
 	/**
 	 * Sets the time in which the item will expire from it's given location.
 	 * @param time - Time of expire in Long format
 	 */
 	public void setExpireTime(long time) {
 		expireTime = time;
-		
-		if(expireTime != -1)
-			location++;
+		location++;
 	}
 	
 	/**
