@@ -96,6 +96,15 @@ public abstract class CommandManger {
 	protected YamlConfiguration getConfig() { return YamlConfiguration.loadConfiguration(new File(manager.getPlugin().getDataFolder(), "config.yml")); }
 	
 	/**
+	 * Used for when the given player does not have the permission(s)
+	 * to perform the given command.
+	 */
+	protected void noPermisison() {
+		if(player != null)
+			player.sendMessage(getConfig().getString("friends.no permission").replace('&', '§'));
+	}
+	
+	/**
 	 * This method is ran on the creation of this class each time.
 	 * While it is not necessary to use this method, it is
 	 * suggested considering it is ran already.
