@@ -40,9 +40,8 @@ public abstract class AbstractMenu {
 	 * what type of setup to have for the menu.
 	 * If the option is set to have a border,
 	 * then the this will auto-fill in the border
-	 * @param name - Name of Inventory
 	 */
-	public AbstractMenu(SCSettingsManager manager, String name, File configFile) {
+	public AbstractMenu(SCSettingsManager manager, File configFile) {
 		this.manager = manager;
 		buttons = new HashMap<Integer, Button>();
 		YamlConfiguration fileConfig = YamlConfiguration.loadConfiguration(configFile);
