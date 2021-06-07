@@ -148,7 +148,7 @@ public class PlayerData implements Serializable {
 		friends = new ArrayList<OfflinePlayer>();
 		friendRequests = new ArrayList<OfflinePlayer>();
 		((List<UUID>) ois.readObject()).forEach(uuid -> { friends.add(Bukkit.getServer().getOfflinePlayer(uuid)); });
-		((List<UUID>) ois.readObject()).forEach(uuid -> { friends.add(Bukkit.getServer().getOfflinePlayer(uuid)); });
+		((List<UUID>) ois.readObject()).forEach(uuid -> { friendRequests.add(Bukkit.getServer().getOfflinePlayer(uuid)); });
 		player = Bukkit.getServer().getOfflinePlayer((UUID) ois.readObject());
 	}
 }
