@@ -15,7 +15,10 @@ public enum Perms {
 	/** <b>scsettings.use</b> */USE("use"),
 	/** <b>scsettings.ignorechat</b> */IGNORE_CHAT("ignorechat"),
 	/** <b>scsettings.override</b> */OVERRIDE("override"),
-	/** <b>scsettings.storage</b> */STORAGE("storage");
+	/** <b>scsettings.storage</b> */STORAGE("storage"),
+	/** <b>scsettings.allowrequests</b> */ALLOW_REQUESTS("allowrequests"),
+	/** <b>scsettings.friendjoin */FRIEND_JOIN("friendjoin"),
+	/** <b>scsettings.deathmessages</b> */DEATH_MESSAGES("deathmessages");
 	
 	private Permission permission;
 	
