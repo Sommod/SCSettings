@@ -166,10 +166,54 @@ public class ItemManager {
 	// expire time.
 	private void updateItemData(ItemData data) {
 		YamlConfiguration config = YamlConfiguration.loadConfiguration(new File(manager.getPlugin().getDataFolder(), "config.yml"));
+		String time;
 		
-		//TODO: Convert time into long value, set long in in ItemData
+		if(data.isInGifter()) {
+			time = config.getString("friends.collect time limit");
+			String[] split = time.split(" ");
+			
+			if(split.length == 1 && time.equalsIgnoreCase("none")) {
+				data.setExpireTime(-1L);
+				return;
+			}
+			
+			long totalTime = 0L;
+			
+			for(String section : split) {
+				if(section.toLowerCase().contains("d"))
+					totalTime += ((((Long.parseLong(section.substring(0, section.length())) * 24) * 60) * 60) * 1000);
+				else if(section.toLowerCase().contains("h"))
+					totalTime += (((Long.parseLong(section.substring(0, section.length())) * 60) * 60) * 1000);
+				else
+					totalTime += ((Long.parseLong(section.substring(0, section.length())) * 60) * 1000);
+			}
+			
+			data.setExpireTime(totalTime + System.currentTimeMillis());
+			
+		} else {
+			time = config.getString("friends.storage time limit");
+			String[] split = time.split(" ");
+			
+			if(split.length == 1 && time.equalsIgnoreCase("none")) {
+				data.setExpireTime(-1L);
+				return;
+			}
+			
+			long totalTime = 0L;
+			
+			for(String section : split) {
+				if(section.toLowerCase().contains("d"))
+					totalTime += ((((Long.parseLong(section.substring(0, section.length())) * 24) * 60) * 60) * 1000);
+				else if(section.toLowerCase().contains("h"))
+					totalTime += (((Long.parseLong(section.substring(0, section.length())) * 60) * 60) * 1000);
+				else
+					totalTime += ((Long.parseLong(section.substring(0, section.length())) * 60) * 1000);
+			}
+			
+			data.setExpireTime(totalTime + System.currentTimeMillis());
+		}
+		
 	}
-	
 	/**
 	 * Gets a list of all the ItemData objects that are present within the system.
 	 * @return List of ItemData
