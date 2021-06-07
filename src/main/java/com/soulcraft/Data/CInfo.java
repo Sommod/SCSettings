@@ -15,13 +15,14 @@ public enum CInfo {
 	LIST("List", "§cist §7[§cl§7]§f: Lists either all possible settings to change, or lists all friends you currently have."),
 	SEND("Send", "§cSend §7[§c§7]§f: Sends a gift to your friend. To send an item, you must have something in your hand to send."),
 	ACCEPT_REWARD("AcceptGift", "§cAcceptGift §7[§caccept §7| §cag§7]§f: Accepts a gift from your friend or accepts all the rewards that you've been gifted."),
-	DECLINE_REWARD("DeclineGift", "§cDeclineGift §7[§cdecline §7| §cd§7]§f: Declines the gift your friend sent you, or you can decline all gifts any friend has sent you."),
+	DECLINE_REWARD("DeclineGift", "§cDeclineGift §7[§cdecline §7| §cdg§7]§f: Declines the gift your friend sent you, or you can decline all gifts any friend has sent you."),
 	ADD("Add", "§cAdd §7[§ca§7]§f: Sends a friend request to the person."),
 	REMOVE("Remove", "§cRemove §7[§cr§7]§f: Removes a friend from your list."),
 	MONEY("Money", "§cMoney §7[§ccash §7| §cnote §7| §cm§7]§f: Obtains a Banknote with the specified amount of money. This can be used to store money physically and used to "
 			+ "§fsend money to you friends."),
 	STORAGE("Storage", "§cStorage §7[§cstr§7]§f: Obtain items in the Admin Storage containing any unclaimed items."),
-	RELOAD("Reload", "§cReload §7[§crl§7]§f: Reloads the plugin and data.");
+	RELOAD("Reload", "§cReload §7[§crl§7]§f: Reloads the plugin and data."),
+	ERROR("Error", "§cIf you are seeing this message, then an error occurred. Please report error to the SoulCraft Administration.");
 	
 	private String name;
 	private String message;
