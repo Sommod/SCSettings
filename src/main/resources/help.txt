@@ -10,8 +10,8 @@ Commands: < > - Required | [ ] Optional
 /SCSurvival list Settings - Lists all the available settings that can be changed
 /SCSurvival list Friends - Lists all Friends
 /SCSurvival send <player> - Sends the item in hand to the given friend
-/SCSurvival acceptreward <# | all> - Accepts gifts
-/SCSurvival declinereward <# | all> - Declines Gifts
+/SCSurvival acceptGift - Accepts gifts
+/SCSurvival declinerGift - Declines Gifts
 /SCSurvival add <player> - Sends a friend request to the given player
 /SCSurvival remove <player> - Removes the given player as a friend
 /SCSurvival money <amount> - Gets s banknote of the specified amount
