@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.util.logging.Level;
 
 import com.soulcraft.SCSettings;
+import com.soulcraft.Items.ItemManager;
 import com.soulcraft.Player.PlayerManager;
 
 /**
@@ -26,6 +27,7 @@ public class SCSettingsManager {
 	private final String[] footer = new String[]{"SCSettings Active!", "#+------------+#", "################"};
 	
 	private PlayerManager playerManager;
+	private ItemManager itemManager;
 	
 	/**
 	 * Creates a new Manager object for the SCSettings plugin. This activates
@@ -120,5 +122,6 @@ public class SCSettingsManager {
 	}	
 	public SCSettings getPlugin() { return plugin; }
 	public PlayerManager getPlayerManager() { return playerManager; }
-
+	public ItemManager getItemManager() { return itemManager; }
+	
 }
