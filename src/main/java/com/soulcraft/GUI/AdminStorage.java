@@ -19,11 +19,13 @@ import com.soulcraft.Data.SCSettingsManager;
  */
 public class AdminStorage extends AbstractMenu {
 
-	
-	//TODO: Create info for constructor
-	//TODO: Create a new file pointer to file location
-	public AdminStorage(SCSettingsManager manager, String name, File configFile) {
-		super(manager, name, configFile);
+	/**
+	 * Creates the menu that handles items not collected within
+	 * the given time from gifting an item.
+	 * @param manager - Plugin Manager
+	 */
+	public AdminStorage(SCSettingsManager manager) {
+		super(manager, new File(manager.getPlugin().getDataFolder(), "Data/Gui Data/Admin Storage.yml"));
 	}
 
 	@Override
