@@ -29,8 +29,8 @@ public class SettingsMenu extends AbstractMenu {
 
 	private ItemStack deathMessage, joinFriend, allowRequests, ignorechat;
 	
-	public SettingsMenu(SCSettingsManager manager, String name) {
-		super(manager, name, new File(manager.getPlugin().getDataFolder(), "Data/Gui Data/Settings Menu.yml"));
+	public SettingsMenu(SCSettingsManager manager) {
+		super(manager, new File(manager.getPlugin().getDataFolder(), "Data/Gui Data/Settings Menu.yml"));
 		initItems();
 	}
 	

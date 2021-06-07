@@ -19,8 +19,8 @@ import com.soulcraft.Data.SCSettingsManager;
  */
 public class GiftMenu extends AbstractMenu {
 	
-	public GiftMenu(SCSettingsManager manager, String name, File configFile) {
-		super(manager, name, configFile);
+	public GiftMenu(SCSettingsManager manager) {
+		super(manager, new File(manager.getPlugin().getDataFolder(), "Data/Gui Data/Gift Menu.yml"));
 	}
 	
 	@Override

@@ -30,8 +30,8 @@ public class AddFriend extends AbstractMenu {
 	private Map<Player, Integer> playerPage;
 	private List<OfflinePlayer> allPlayers;
 	
-	public AddFriend(SCSettingsManager manager, String name) {
-		super(manager, name, new File(manager.getPlugin().getDataFolder(), "Data/Gui Data/Add Friend.yml"));
+	public AddFriend(SCSettingsManager manager) {
+		super(manager, new File(manager.getPlugin().getDataFolder(), "Data/Gui Data/Add Friend.yml"));
 		playerPage = new HashMap<Player, Integer>();
 		allPlayers = new ArrayList<OfflinePlayer>();
 		Arrays.asList(manager.getPlugin().getServer().getOfflinePlayers()).forEach(off -> { allPlayers.add(off); });

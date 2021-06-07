@@ -22,8 +22,8 @@ import com.soulcraft.Player.PlayerData;
  */
 public class FriendRequestMenu extends AbstractMenu {
 
-	public FriendRequestMenu(SCSettingsManager manager, String name) {
-		super(manager, name, new File(manager.getPlugin().getDataFolder(), "Data/Gui Data/Friend Request.yml"));
+	public FriendRequestMenu(SCSettingsManager manager) {
+		super(manager, new File(manager.getPlugin().getDataFolder(), "Data/Gui Data/Friend Request.yml"));
 	}
 
 	@Override

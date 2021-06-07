@@ -17,8 +17,8 @@ import com.soulcraft.Data.SCSettingsManager;
  */
 public class MainMenu extends AbstractMenu {
 
-	public MainMenu(SCSettingsManager manager, String name) {
-		super(manager, name, new File(manager.getPlugin().getDataFolder(), "Data/Gui Data/Main Menu.yml"));
+	public MainMenu(SCSettingsManager manager) {
+		super(manager, new File(manager.getPlugin().getDataFolder(), "Data/Gui Data/Main Menu.yml"));
 	}
 
 	@Override
