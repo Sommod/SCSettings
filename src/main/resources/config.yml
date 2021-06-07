@@ -19,6 +19,8 @@ friends:
   # not claim the given gift within the given time, then the
   # item will return to the owners. To remove time limit, put
   # 'none' as the time limit.
+  # Accepted  Times are D, H and M
+  # Apply a space in-between times (7D 23H 17M)
   gift time limit: '12H'
   
   # When a person fails to collect the gift in time, this
@@ -26,11 +28,15 @@ friends:
   # the item they gifted. Shold they fail within the time
   # limit, then the item moves to the Storage Container.
   # To remove the time limit, put 'none'.
+  # Accepted  Times are D, H and M
+  # Apply a space in-between times (7D 23H 17M)
   collect time limit: '12H'
   
   # This puts forth the time in which an item will be stored
   # within the Admin Stroage Container. To remove the time
   # limit, put 'none' as the time limit.
+  # Accepted  Times are D, H and M
+  # Apply a space in-between times (7D 23H 17M)
   storage time limit: '7D'
   
   # Sets forth a list of items that cannot be sent as a gift.
@@ -48,54 +54,5 @@ friends:
   no permission: '&e&lPERMS &8» &cSorry, you are lacking in the Permission Department to perform that action.'
 
 
-# This handles the format for items sent as gifts, items
-# returned, and items that are in the ADMIN storage
-gui:
-  
-  # This sets how the time will be displayed in the formats.
-  # There are two options available, if an input is given that
-  # is not one of the two options, then this will default to
-  # the 'DHMS' format.
-  # 'DHMS' -> '7D 3H 21M 59S'
-  # '0000' -> '07:03:21:59'
-  time format: 'DHMS'
-  
-  # The message that will be put into the lore on the item
-  # when it is in gift form. This is the message that will
-  # appear during the gift interval.
-  format gift:
-    - '&cSender: &f%sender%'
-    - '&cTime Left: &f%time%'
-    - '&a&lLeft-Click&f to accept'
-    - '&4&lRight-Click to decline'
-    - '&6---------------------'
-  
-  # This displays in the lore of the item when the item
-  # has been returned to the owner of the gift.
-  format return:
-    - '&cGift: &fNot Accepted'
-    - '&cTime Left: &f%time%'
-    - '&aClick to collect'
-    - '&6---------------------'
-  
-  # Sets the display information of the item found within
-  # the Admin Storage.
-  format storage:
-    - '&cSender: &f%sender%'
-    - '&cReceiver: &f%receiver%'
-    - '&cTime Left: &f%time%'
-    - '&aLeft-Click: &fReturn to Owner'
-    - '&dRight-Click: &fTake Item'
-    - '&4Middle-Click: &fDelete Item'
-    
-  # Sets the information of friends within the friend
-  # GUI menu.
-  # %status% -> Displays either Online (green) or Offline (red)
-  # %balance% -> Displays players account balance
-  # %date% -> Display when both players became friends
-  format friend:
-    - '&6Status: %status%'
-    - '&76Balance: &a$%balance%'
-    - '&6Friends Since: &a%date%'
-  
+
 # End Transmission...
