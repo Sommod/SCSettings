@@ -95,9 +95,6 @@ public class SCSettingsManager {
 		try {
 			toLoad.createNewFile();
 			
-			if(!plugin.getDataFolder().exists())
-				plugin.getDataFolder().mkdir();
-			
 			if(!toLoad.exists())
 				toLoad.createNewFile();
 			
