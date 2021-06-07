@@ -23,6 +23,7 @@ permissions:
       scsettings.ignorechat: true
       scsettings.override: true
       scsettings.storage: true
+      scsettings.reload: true
       
   scsettings.use:
     default: true
@@ -51,3 +52,7 @@ permissions:
   scsettings.storage:
     default: op
     description: 'Allows access to the Admin Storage'
+  
+  scsettings.reload:
+    default: op
+    description: 'Allows reload the plugin and the data within.'
