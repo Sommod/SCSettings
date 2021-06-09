@@ -64,6 +64,20 @@ public class PlayerData implements Serializable {
 	public boolean isFriend(OfflinePlayer player) { return friends.contains(player); }
 	
 	/**
+	 * Checks if the given player is a friend.
+	 * @param name - Name of Player
+	 * @return True - if player is a friend
+	 */
+	public boolean isFriend(String name) {
+		for(OfflinePlayer off : friends) {
+			if(off.getName().equalsIgnoreCase(name))
+				return true;
+		}
+		
+		return false;
+	}
+	
+	/**
 	 * Adds a new player as a friend. If the player is
 	 * already a friend, then nothing changes.
 	 * @param player - player to add
