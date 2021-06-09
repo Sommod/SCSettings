@@ -57,6 +57,36 @@ public class PlayerData implements Serializable {
 	public OfflinePlayer getPlayer() { return player; }
 	
 	/**
+	 * Gets the friend object based on the name of the given
+	 * friend.
+	 * @param name - NAme of player
+	 * @return Friend - Otherwise null
+	 */
+	public OfflinePlayer getFriend(String name) {
+		for(OfflinePlayer off : friends) {
+			if(name.equalsIgnoreCase(off.getName()))
+				return off;
+		}
+		
+		 return null;
+	}
+	
+	/**
+	 * Gets the friend object based on the UUID of the given
+	 * friend.
+	 * @param id - UUID of player
+	 * @return Friend - Otherwise null
+	 */
+	public OfflinePlayer getFriend(UUID id) {
+		for(OfflinePlayer off : friends) {
+			if(id.equals(off.getUniqueId()))
+				return off;
+		}
+		
+		 return null;
+	}
+	
+	/**
 	 * Checks if the given player is a friend.
 	 * @param player - Player to check
 	 * @return True - if player is friend
