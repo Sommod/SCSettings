@@ -28,6 +28,7 @@ public class SCSettingsManager {
 	
 	private PlayerManager playerManager;
 	private ItemManager itemManager;
+	private Blacklist blacklist;
 	
 	/**
 	 * Creates a new Manager object for the SCSettings plugin. This activates
@@ -120,5 +121,6 @@ public class SCSettingsManager {
 	public SCSettings getPlugin() { return plugin; }
 	public PlayerManager getPlayerManager() { return playerManager; }
 	public ItemManager getItemManager() { return itemManager; }
+	public Blacklist getBlacklist() { return blacklist; }
 	
 }
