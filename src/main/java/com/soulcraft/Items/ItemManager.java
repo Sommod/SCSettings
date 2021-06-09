@@ -170,47 +170,25 @@ public class ItemManager {
 		
 		if(data.isInGifter()) {
 			time = config.getString("friends.collect time limit");
-			String[] split = time.split(" ");
+			long expireTime = getExpireTime(time.split(" "));
 			
-			if(split.length == 1 && time.equalsIgnoreCase("none")) {
+			if(expireTime == -1L) {
 				data.setExpireTime(-1L);
 				return;
 			}
 			
-			long totalTime = 0L;
-			
-			for(String section : split) {
-				if(section.toLowerCase().contains("d"))
-					totalTime += ((((Long.parseLong(section.substring(0, section.length())) * 24) * 60) * 60) * 1000);
-				else if(section.toLowerCase().contains("h"))
-					totalTime += (((Long.parseLong(section.substring(0, section.length())) * 60) * 60) * 1000);
-				else
-					totalTime += ((Long.parseLong(section.substring(0, section.length())) * 60) * 1000);
-			}
-			
-			data.setExpireTime(totalTime + System.currentTimeMillis());
+			data.setExpireTime(expireTime + System.currentTimeMillis());
 			
 		} else {
 			time = config.getString("friends.storage time limit");
-			String[] split = time.split(" ");
+			long expireTime = getExpireTime(time.split(" "));
 			
-			if(split.length == 1 && time.equalsIgnoreCase("none")) {
+			if(expireTime == -1L) {
 				data.setExpireTime(-1L);
 				return;
 			}
 			
-			long totalTime = 0L;
-			
-			for(String section : split) {
-				if(section.toLowerCase().contains("d"))
-					totalTime += ((((Long.parseLong(section.substring(0, section.length())) * 24) * 60) * 60) * 1000);
-				else if(section.toLowerCase().contains("h"))
-					totalTime += (((Long.parseLong(section.substring(0, section.length())) * 60) * 60) * 1000);
-				else
-					totalTime += ((Long.parseLong(section.substring(0, section.length())) * 60) * 1000);
-			}
-			
-			data.setExpireTime(totalTime + System.currentTimeMillis());
+			data.setExpireTime(expireTime + System.currentTimeMillis());
 		}
 		
 	}
@@ -254,5 +232,40 @@ public class ItemManager {
 	 * @return True - If UUID of ItemData exists
 	 */
 	public boolean isItemData(UUID id) { return items.containsKey(id); }
+	
+	/**
+	 * Adds a new item to the stored item data within the ItemManager.
+	 * @param player - Sender of gift
+	 * @param friend - Receiver of gift
+	 * @param item - Item that is the gift
+	 */
+	public void addItem(OfflinePlayer player, OfflinePlayer friend, ItemStack item) {
+		YamlConfiguration config = YamlConfiguration.loadConfiguration(new File(manager.getPlugin().getDataFolder(), "config.yml"));
+		ItemData id = new ItemData(item, player, friend, getExpireTime(config.getString("friends.gift time limit").split(" ")));
+		
+		items.put(id.getID(), id);
+	}
+	
+	// used to get the time of the given string array
+	private long getExpireTime(String[] split) {
+		String[] calc = split;
+		
+		if(calc.length == 1 && calc[0].equalsIgnoreCase("none")) {
+			return -1L;
+		}
+		
+		long totalTime = 0L;
+		
+		for(String section : calc) {
+			if(section.toLowerCase().contains("d"))
+				totalTime += ((((Long.parseLong(section.substring(0, section.length())) * 24) * 60) * 60) * 1000);
+			else if(section.toLowerCase().contains("h"))
+				totalTime += (((Long.parseLong(section.substring(0, section.length())) * 60) * 60) * 1000);
+			else
+				totalTime += ((Long.parseLong(section.substring(0, section.length())) * 60) * 1000);
+		}
+		
+		return totalTime;
+	}
 
 }
