@@ -9,6 +9,7 @@ Commands: < > - Required | [ ] Optional
 /SCSurvival Settings <Setting> - Toggles the given setting
 /SCSurvival list Settings - Lists all the available settings that can be changed
 /SCSurvival list Friends - Lists all Friends
+/SCSurvival list Requests - Lists all Individuals that have sent a friend request
 /SCSurvival send <player> - Sends the item in hand to the given friend
 /SCSurvival acceptGift - Accepts gifts
 /SCSurvival declinerGift - Declines Gifts
