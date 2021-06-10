@@ -16,7 +16,7 @@ Commands: < > - Required | [ ] Optional
 /SCSurvival add <player> - Sends a friend request to the given player, or accepts friend request
 /SCSurvival remove <player> - Removes the given player as a friend, or cancels a friend request
 /SCSurvival money <amount> - Gets s banknote of the specified amount
-/SCSurvival storage <#> - Gets the item from the Admin Storage
+/SCSurvival storage <[#]> - Gets the item from the Admin Storage
 /SCSurvival Reload - Reloads the plugin
 
 
