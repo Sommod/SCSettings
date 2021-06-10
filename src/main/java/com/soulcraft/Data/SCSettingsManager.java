@@ -117,7 +117,15 @@ public class SCSettingsManager {
 			plugin.getLogger().log(Level.SEVERE, "Error: Could not Load config data into the config file.");
 			e.printStackTrace();
 		}
-	}	
+	}
+	
+	/**
+	 * Used to reload the entire plugin.
+	 */
+	public void reload() {
+		
+	}
+	
 	public SCSettings getPlugin() { return plugin; }
 	public PlayerManager getPlayerManager() { return playerManager; }
 	public ItemManager getItemManager() { return itemManager; }
