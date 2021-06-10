@@ -192,6 +192,15 @@ public class ItemManager {
 		}
 		
 	}
+	
+	/**
+	 * Manually updates the given ItemData. This is mostly used
+	 * when the player issues the command, or using the GUI system
+	 * to decline a gift.
+	 * @param itemData - ItemData to update
+	 */
+	public void updateItem(ItemData itemData) { updateItemData(itemData); }
+	
 	/**
 	 * Gets a list of all the ItemData objects that are present within the system.
 	 * @return List of ItemData
