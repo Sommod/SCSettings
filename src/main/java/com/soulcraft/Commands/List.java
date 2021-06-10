@@ -33,7 +33,7 @@ public class List extends CommandManger {
 			return;
 		}
 		
-		boolean settings = false;
+		int loc = 0;
 		
 		switch (getArgs()[1].toLowerCase()) {
 		case "settings":
@@ -41,12 +41,20 @@ public class List extends CommandManger {
 		case "s":
 		case "set":
 		case "sets":
-			settings = true;
 			break;
 			
 		case "friends":
 		case "friend":
 		case "f":
+			loc = 1;
+			break;
+			
+		case "requests":
+		case "request":
+		case "r":
+		case "friendrequest":
+		case "friendsrequests":
+			loc = 2;
 			break;
 
 		default:
@@ -54,13 +62,24 @@ public class List extends CommandManger {
 			return;
 		}
 		
-		if(settings)
+		if(loc == 1)
 			settings();
-		else
+		else if(loc == 2)
 			friends();
+		else
+			requests();
 		
 	}
 	
+	// Shows all the individuals that have sent a friend request
+	private void requests() {
+		getPlayer().sendMessage("§c§m----§f Friend Requests §c§m----");
+		getManager().getPlayerManager().getPlayerData(getPlayer())
+		.getAllFriendRequests().forEach(off -> { getPlayer().sendMessage(off.getName()); } );
+		getPlayer().sendMessage("§c§m-------------------------");
+	}
+	
+	// Lists the settings that are currently available to be changed.
 	private void settings() {
 		getPlayer().sendMessage("§c§m----§f Settings §c§m----");
 		getPlayer().sendMessage("§bTogglable Settings:"
@@ -68,9 +87,12 @@ public class List extends CommandManger {
 		getPlayer().sendMessage("§c§m------------------");
 	}
 	
+	// Lists all friends that the player has
 	private void friends() {
+		getPlayer().sendMessage("§c§m----§f Friends §c§m----");
 		getManager().getPlayerManager().getPlayerData(getPlayer())
 		.getAllFriends().forEach(off -> { getPlayer().sendMessage(off.getName()); });
+		getPlayer().sendMessage("§c§m-----------------");
 	}
 
 }
