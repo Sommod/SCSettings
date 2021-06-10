@@ -55,6 +55,7 @@ public class AddFriend extends CommandManger {
 		if(getManager().getPlayerManager().getPlayerData(getPlayer()).isFriendRequest(target)) {
 			getManager().getPlayerManager().getPlayerData(getPlayer()).removeFriendRequest(target);
 			getManager().getPlayerManager().getPlayerData(getPlayer()).addFriend(target);
+			getManager().getPlayerManager().getPlayerData(target).addFriend(getPlayer());
 			getPlayer().sendMessage("§b" + target.getName() + "§a has been added to your friends list.");
 		} else {
 			getManager().getPlayerManager().getPlayerData(target).addFriendRequest(getPlayer());
