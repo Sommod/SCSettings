@@ -41,8 +41,12 @@ public class Settings extends CommandManger {
 		case "i":
 		case "ignorechat":
 		case "ic":
-			pd.getChatSettings().setIgnoreGlobalChat(!pd.getChatSettings().isIgnoringGlobalChat());
-			break;
+			if(getPlayer().hasPermission(Perms.IGNORE_CHAT.toString())) {
+				pd.getChatSettings().setIgnoreGlobalChat(!pd.getChatSettings().isIgnoringGlobalChat());
+				getPlayer().sendMessage("§aSurvival Settings Updated!");
+			} else
+				noPermisison();
+			return;
 			
 		case "deathmessages":
 		case "deathmessage":
@@ -51,8 +55,12 @@ public class Settings extends CommandManger {
 		case "messages":
 		case "d":
 		case "m":
-			pd.getChatSettings().setDeathMessages(!pd.getChatSettings().isSeeingDeathMessages());
-			break;
+			if(getPlayer().hasPermission(Perms.DEATH_MESSAGES.toString())) {
+				pd.getChatSettings().setDeathMessages(!pd.getChatSettings().isSeeingDeathMessages());
+				getPlayer().sendMessage("§aSurvival Settings Updated!");
+			} else
+				noPermisison();
+			return;
 			
 		case "friendjoin":
 		case "friends":
@@ -60,24 +68,30 @@ public class Settings extends CommandManger {
 		case "fj":
 		case "join":
 		case "j":
-			pd.getChatSettings().setNotifyFriendJoin(!pd.getChatSettings().isNotifiedFriendJoin());
-			break;
+			if(getPlayer().hasPermission(Perms.FRIEND_JOIN.toString())) {
+				pd.getChatSettings().setNotifyFriendJoin(!pd.getChatSettings().isNotifiedFriendJoin());
+				getPlayer().sendMessage("§aSurvival Settings Updated!");
+			} else
+				noPermisison();
+			return;
 
 		case "friendrequest":
 		case "fq":
 		case "request":
 		case "requests":
 		case "r":
-			pd.getChatSettings().setAllowFriendRequets(!pd.getChatSettings().isAllowingFriendRequest());
-			break;
+			if(getPlayer().hasPermission(Perms.ALLOW_REQUESTS.toString())) {
+				pd.getChatSettings().setAllowFriendRequets(!pd.getChatSettings().isAllowingFriendRequest());
+				getPlayer().sendMessage("§aSurvival Settings Updated!");
+			} else
+				noPermisison();
+			return;
 			
 		default:
 			getPlayer().sendMessage("§cError, there is not setting option by that tag. To view a list of changable settings,"
 					+ " §ctype §b/SCSettings List Settings§c.");
 			return;
 		}
-		
-		getPlayer().sendMessage("§aSurvival Settings Updated!");
 	}
 
 }
