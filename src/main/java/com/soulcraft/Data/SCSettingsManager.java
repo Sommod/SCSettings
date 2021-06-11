@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.util.logging.Level;
 
 import com.soulcraft.SCSettings;
+import com.soulcraft.Commands.Commands;
 import com.soulcraft.Items.ItemManager;
 import com.soulcraft.Player.PlayerManager;
 
@@ -29,6 +30,7 @@ public class SCSettingsManager {
 	private PlayerManager playerManager;
 	private ItemManager itemManager;
 	private Blacklist blacklist;
+	private Commands commands;
 	
 	/**
 	 * Creates a new Manager object for the SCSettings plugin. This activates
@@ -45,6 +47,12 @@ public class SCSettingsManager {
 		// Configuration
 		plugin.getLogger().info("Registering Configuration...");
 		registerConfiguration();
+		
+		plugin.getLogger().info("Configuration complete");
+		plugin.getLogger().info("Registering commands...");
+		registerCommands();
+		
+		
 		plugin.getLogger().info("Configuration Registered!");
 		
 		//TODO: Input details about what is initialized.
@@ -53,9 +61,7 @@ public class SCSettingsManager {
 		 plugin.getLogger().info(f);
 	}
 	
-	private void registerCommands() {
-		
-	}
+	private void registerCommands() { this.commands = new Commands(this); }
 	
 	private void registerEvents() {
 		
@@ -87,6 +93,7 @@ public class SCSettingsManager {
 		writeFile(plugin.getClass().getResourceAsStream("add_friend.yml"), new File(plugin.getDataFolder(), "Data/Gui Data/Add Friend.yml"));
 		writeFile(plugin.getClass().getResourceAsStream("friend_request.yml"), new File(plugin.getDataFolder(), "Data/Gui Data/Friend Request.yml"));
 		writeFile(plugin.getClass().getResourceAsStream("main_menu.yml"), new File(plugin.getDataFolder(), "Data/Gui Data/Main Menu.yml"));
+		//TODO: Write missing files
 	}
 	
 	// Grabs the stored file as an Input Stream
