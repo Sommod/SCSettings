@@ -13,7 +13,7 @@ public enum CInfo {
 	HELP("Help", "§cHelp §7[§ch§7]§f: Lists all commands or shows the information page of the gien command."),
 	SETTINGS("Settings", "§cSettings §7[§cset§7]§f: Used to change chat settings. You can view a list of settings to change by using the command §b/SCSurvival List Settings§f."),
 	LIST("List", "§cist §7[§cl§7]§f: Lists either all possible settings to change, or lists all friends you currently have."),
-	SEND("Send", "§cSend §7[§c§7]§f: Sends a gift to your friend. To send an item, you must have something in your hand to send."),
+	SEND("Send", "§cSend §7[§cs§7]§f: Sends a gift to your friend. To send an item, you must have something in your hand to send."),
 	ACCEPT_REWARD("AcceptGift", "§cAcceptGift §7[§caccept §7| §cag§7]§f: Accepts a gift from your friend or accepts all the rewards that you've been gifted."),
 	DECLINE_REWARD("DeclineGift", "§cDeclineGift §7[§cdecline §7| §cdg§7]§f: Declines the gift your friend sent you, or you can decline all gifts any friend has sent you."),
 	ADD("Add", "§cAdd §7[§ca§7]§f: Sends a friend request to the person."),
