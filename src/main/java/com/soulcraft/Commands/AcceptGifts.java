@@ -2,6 +2,7 @@ package com.soulcraft.Commands;
 
 import java.util.List;
 
+import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
 import com.soulcraft.Data.Perms;
@@ -19,7 +20,7 @@ import com.soulcraft.Items.ItemData;
  */
 public class AcceptGifts extends CommandManger {
 
-	public AcceptGifts(CommandSender sender, String command, String[] args, SCSettingsManager manager) {
+	public AcceptGifts(CommandSender sender, Command command, String[] args, SCSettingsManager manager) {
 		super(sender, command, args, manager);
 	}
 	

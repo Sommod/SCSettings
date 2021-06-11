@@ -2,6 +2,7 @@ package com.soulcraft.Commands;
 
 import java.io.File;
 
+import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -24,10 +25,10 @@ public abstract class CommandManger {
 	private CommandSender sender;
 	
 	private SCSettingsManager manager;
-	private String command;
+	private Command command;
 	private String[] args;
 	
-	public CommandManger(CommandSender sender, String command, String[] args, SCSettingsManager manager) {
+	public CommandManger(CommandSender sender, Command command, String[] args, SCSettingsManager manager) {
 		this.sender = sender;
 		this.manager = manager;
 		this.args = args;
@@ -69,7 +70,7 @@ public abstract class CommandManger {
 	 * Gets the issued command
 	 * @return String
 	 */
-	protected String getCommand() { return command; }
+	protected Command getCommand() { return command; }
 	
 	/**
 	 * Gets the args of the command

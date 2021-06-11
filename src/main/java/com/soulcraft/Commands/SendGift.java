@@ -1,6 +1,7 @@
 package com.soulcraft.Commands;
 
 import org.bukkit.OfflinePlayer;
+import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.inventory.ItemStack;
 
@@ -20,7 +21,7 @@ import com.soulcraft.Player.PlayerData;
  */
 public class SendGift extends CommandManger {
 
-	public SendGift(CommandSender sender, String command, String[] args, SCSettingsManager manager) {
+	public SendGift(CommandSender sender, Command command, String[] args, SCSettingsManager manager) {
 		super(sender, command, args, manager);
 	}
 	

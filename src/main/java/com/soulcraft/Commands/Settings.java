@@ -1,5 +1,6 @@
 package com.soulcraft.Commands;
 
+import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
 import com.soulcraft.Data.Perms;
@@ -15,7 +16,7 @@ import com.soulcraft.Player.PlayerData;
  */
 public class Settings extends CommandManger {
 
-	public Settings(CommandSender sender, String command, String[] args, SCSettingsManager manager) {
+	public Settings(CommandSender sender, Command command, String[] args, SCSettingsManager manager) {
 		super(sender, command, args, manager);
 	}
 	

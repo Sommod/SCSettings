@@ -1,6 +1,7 @@
 package com.soulcraft.Commands;
 
 import org.bukkit.OfflinePlayer;
+import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
 import com.soulcraft.Data.Perms;
@@ -19,7 +20,7 @@ import com.soulcraft.Player.PlayerData;
  */
 public class RemoveFriend extends CommandManger {
 
-	public RemoveFriend(CommandSender sender, String command, String[] args, SCSettingsManager manager) {
+	public RemoveFriend(CommandSender sender, Command command, String[] args, SCSettingsManager manager) {
 		super(sender, command, args, manager);
 	}
 	

@@ -2,6 +2,8 @@ package com.soulcraft.Commands;
 
 import java.util.Arrays;
 
+import javax.activation.CommandObject;
+
 import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
 import org.bukkit.enchantments.Enchantment;
@@ -24,7 +26,7 @@ import net.milkbowl.vault.economy.Economy;
  */
 public class BankNote extends CommandManger {
 
-	public BankNote(CommandSender sender, String command, String[] args, SCSettingsManager manager) {
+	public BankNote(CommandSender sender, CommandObject command, String[] args, SCSettingsManager manager) {
 		super(sender, command, args, manager);
 	}
 	

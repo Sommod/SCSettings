@@ -1,6 +1,7 @@
 package com.soulcraft.Commands;
 
 import org.bukkit.OfflinePlayer;
+import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
 import com.soulcraft.Data.Perms;
@@ -16,7 +17,7 @@ import com.soulcraft.Data.SCSettingsManager;
  */
 public class AddFriend extends CommandManger {
 
-	public AddFriend(CommandSender sender, String command, String[] args, SCSettingsManager manager) {
+	public AddFriend(CommandSender sender, Command command, String[] args, SCSettingsManager manager) {
 		super(sender, command, args, manager);
 	}
 	

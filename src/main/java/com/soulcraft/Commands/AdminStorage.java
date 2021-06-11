@@ -1,5 +1,6 @@
 package com.soulcraft.Commands;
 
+import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
 import com.soulcraft.Data.Perms;
@@ -16,7 +17,7 @@ import com.soulcraft.Items.ItemData;
  */
 public class AdminStorage extends CommandManger {
 
-	public AdminStorage(CommandSender sender, String command, String[] args, SCSettingsManager manager) {
+	public AdminStorage(CommandSender sender, Command command, String[] args, SCSettingsManager manager) {
 		super(sender, command, args, manager);
 	}
 	

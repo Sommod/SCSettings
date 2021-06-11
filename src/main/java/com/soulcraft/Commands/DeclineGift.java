@@ -3,6 +3,7 @@ package com.soulcraft.Commands;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
 import com.soulcraft.Data.Perms;
@@ -19,7 +20,7 @@ import com.soulcraft.Items.ItemData;
  */
 public class DeclineGift extends CommandManger {
 
-	public DeclineGift(CommandSender sender, String command, String[] args, SCSettingsManager manager) {
+	public DeclineGift(CommandSender sender, Command command, String[] args, SCSettingsManager manager) {
 		super(sender, command, args, manager);
 	}
 	
