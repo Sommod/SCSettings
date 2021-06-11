@@ -13,9 +13,9 @@ import com.soulcraft.Data.SCSettingsManager;
  * @version 1.0
  *
  */
-public class Relaod extends CommandManger {
+public class Reload extends CommandManger {
 
-	public Relaod(CommandSender sender, Command command, String[] args, SCSettingsManager manager) {
+	public Reload(CommandSender sender, Command command, String[] args, SCSettingsManager manager) {
 		super(sender, command, args, manager);
 	}
 	
