@@ -31,6 +31,7 @@ public class SCSettingsManager {
 	private ItemManager itemManager;
 	private Blacklist blacklist;
 	private Commands commands;
+	private Updater timer;
 	
 	/**
 	 * Creates a new Manager object for the SCSettings plugin. This activates
@@ -64,7 +65,8 @@ public class SCSettingsManager {
 	private void registerCommands() { this.commands = new Commands(this); }
 	
 	private void registerEvents() {
-		
+		timer = new Updater(this);
+		timer.initTimer();
 	}
 	
 	/**
@@ -137,5 +139,6 @@ public class SCSettingsManager {
 	public PlayerManager getPlayerManager() { return playerManager; }
 	public ItemManager getItemManager() { return itemManager; }
 	public Blacklist getBlacklist() { return blacklist; }
+	public Updater getTimer() { return timer; }
 	
 }
