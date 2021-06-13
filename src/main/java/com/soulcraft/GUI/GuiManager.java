@@ -44,4 +44,32 @@ public class GuiManager {
 	
 	@SuppressWarnings("unchecked")
 	protected <T extends AbstractMenu> T getMenu(Class<T> clazz) { return (T) menus.get(clazz); }
+	
+	/**
+	 * Checks if the given tile is of one of the menus.
+	 * @param titleCheck
+	 * @return True - if a menu is the same
+	 */
+	public boolean isMenu(String titleCheck) {
+		for(AbstractMenu am : menus.values()) {
+			if(am.isTitle(titleCheck))
+				return true;
+		}
+
+		return false;
+	}
+	
+	/**
+	 * Gets the super class of the given menu.
+	 * @param title - Title of Menu
+	 * @return AbstractMenu
+	 */
+	public AbstractMenu getMenu(String title) {
+		for(AbstractMenu am : menus.values()) {
+			if(am.isTitle(title))
+				return am;
+		}
+		
+		return null;
+	}
 }
