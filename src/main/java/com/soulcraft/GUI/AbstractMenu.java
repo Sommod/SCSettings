@@ -33,6 +33,7 @@ public abstract class AbstractMenu {
 	private Map<Integer, Button> buttons;
 	private ItemStack fillItem;
 	private boolean border;
+	private String title;
 	
 	/**
 	 * Initializes a new Inventory as well
@@ -45,7 +46,8 @@ public abstract class AbstractMenu {
 		this.manager = manager;
 		buttons = new HashMap<Integer, Button>();
 		YamlConfiguration fileConfig = YamlConfiguration.loadConfiguration(configFile);
-		inv = manager.getPlugin().getServer().createInventory(null, fileConfig.isInt("size") ? fileConfig.getInt("size") : 54, fileConfig.getString("name").replace('&', '§'));
+		title = fileConfig.getString("name").replace('&', '§');
+		inv = manager.getPlugin().getServer().createInventory(null, fileConfig.isInt("size") ? fileConfig.getInt("size") : 54, title);
 		
 		// Adds each item found in the slots of the config
 		for(String slotNum : fileConfig.getConfigurationSection("slots").getKeys(false)) {
@@ -180,6 +182,19 @@ public abstract class AbstractMenu {
 	 * @return True - if button
 	 */
 	public boolean isButton(int slot) { return buttons.containsKey(slot); }
+	
+	/**
+	 * Checks if the given string value is the same as the title
+	 * of this menu. If it is, then this will return True.
+	 * @param check - Inventory name
+	 * @return True - if name matches
+	 */
+	public boolean isTitle(String check) {
+		if(!check.contains("§"))
+			return check.equals(title.substring(4));
+		else
+			return check.equals(title);
+	}
 	
 	/**
 	 * Gets the button of the given slots number. If the slot given is
