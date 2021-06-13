@@ -29,6 +29,7 @@ public class SCSettingsManager {
 	
 	private PlayerManager playerManager;
 	private ItemManager itemManager;
+	private FileManager fileManager;
 	private Blacklist blacklist;
 	private Commands commands;
 	private Updater timer;
@@ -90,42 +91,6 @@ public class SCSettingsManager {
 		
 		if(!file.exists())
 			file.mkdir();
-		
-		writeFile(plugin.getClass().getResourceAsStream("config.yml"), new File(plugin.getDataFolder(), "config.yml"));
-		writeFile(plugin.getClass().getResourceAsStream("add_friend.yml"), new File(plugin.getDataFolder(), "Data/Gui Data/Add Friend.yml"));
-		writeFile(plugin.getClass().getResourceAsStream("friend_request.yml"), new File(plugin.getDataFolder(), "Data/Gui Data/Friend Request.yml"));
-		writeFile(plugin.getClass().getResourceAsStream("main_menu.yml"), new File(plugin.getDataFolder(), "Data/Gui Data/Main Menu.yml"));
-		//TODO: Write missing files
-	}
-	
-	// Grabs the stored file as an Input Stream
-	// Gets each line of InputStream and writes
-	// each byte to the config.yml file (toLoad)
-	private void writeFile(InputStream fis, File toLoad) {
-		try {
-			toLoad.createNewFile();
-			
-			if(!toLoad.exists())
-				toLoad.createNewFile();
-			
-			FileOutputStream fos = new FileOutputStream(toLoad);
-			
-			if(!toLoad.exists())
-				toLoad.createNewFile();
-			
-			int i = 0;
-			byte[] buffer = new byte[1024];
-			
-			while((i = fis.read(buffer)) != -1)
-				fos.write(buffer, 0, i);
-			
-			fis.close();
-			fos.close();
-			
-		} catch (IOException e) {
-			plugin.getLogger().log(Level.SEVERE, "Error: Could not Load config data into the config file.");
-			e.printStackTrace();
-		}
 	}
 	
 	/**
