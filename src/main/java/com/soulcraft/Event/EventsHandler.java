@@ -40,14 +40,18 @@ public class EventsHandler implements Listener {
 	
 	@EventHandler
 	public void onClickEvent(InventoryClickEvent event) {
-		if(!isMenu(event.getWhoClicked().getOpenInventory().getTitle()))
+		if(isMenu(event.getWhoClicked().getOpenInventory().getTitle()) == -1)
 			return;
 		
 		
 	}
 	
-	private boolean isMenu(String title) {
-		return false;
+	// Checks if the Inventory open contains the
+	// Name of any found within this plugin's
+	// menus. If it is not, then thiw will
+	// return (-1).
+	private int isMenu(String title) {
+		return -1;
 	}
 
 }
