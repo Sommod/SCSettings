@@ -2,6 +2,7 @@ package com.soulcraft.Data;
 
 import com.soulcraft.SCSettings;
 import com.soulcraft.Commands.Commands;
+import com.soulcraft.GUI.GuiManager;
 import com.soulcraft.Items.ItemManager;
 import com.soulcraft.Player.PlayerManager;
 
@@ -24,6 +25,7 @@ public class SCSettingsManager {
 	private PlayerManager playerManager;
 	private ItemManager itemManager;
 	private FileManager fileManager;
+	private GuiManager guiManager;
 	private Blacklist blacklist;
 	private Updater timer;
 	
@@ -56,7 +58,7 @@ public class SCSettingsManager {
 		
 		plugin.getLogger().info("Player Data Registered!");
 		plugin.getLogger().info("Registering Gui..");
-		//TODO: Initialize Gui Manager
+		guiManager = new GuiManager(this);
 		
 		plugin.getLogger().info("Gui Registeted!");
 		
@@ -80,6 +82,7 @@ public class SCSettingsManager {
 	public PlayerManager getPlayerManager() { return playerManager; }
 	public ItemManager getItemManager() { return itemManager; }
 	public FileManager getFileManager() { return fileManager; }
+	public GuiManager getGuiManager() { return guiManager; }
 	public Blacklist getBlacklist() { return blacklist; }
 	public Updater getTimer() { return timer; }
 	
