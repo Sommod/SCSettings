@@ -40,7 +40,14 @@ public class EventsHandler implements Listener {
 	
 	@EventHandler
 	public void onClickEvent(InventoryClickEvent event) {
+		if(!isMenu(event.getWhoClicked().getOpenInventory().getTitle()))
+			return;
 		
+		
+	}
+	
+	private boolean isMenu(String title) {
+		return false;
 	}
 
 }
