@@ -1,11 +1,5 @@
 package com.soulcraft.Data;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.logging.Level;
-
 import com.soulcraft.SCSettings;
 import com.soulcraft.Commands.Commands;
 import com.soulcraft.Items.ItemManager;
@@ -31,7 +25,6 @@ public class SCSettingsManager {
 	private ItemManager itemManager;
 	private FileManager fileManager;
 	private Blacklist blacklist;
-	private Commands commands;
 	private Updater timer;
 	
 	/**
@@ -46,51 +39,34 @@ public class SCSettingsManager {
 		for(String h : header)
 			plugin.getLogger().info(h);
 		
-		// Configuration
 		plugin.getLogger().info("Registering Configuration...");
-		registerConfiguration();
+		fileManager = new FileManager(this);
 		
 		plugin.getLogger().info("Configuration complete");
 		plugin.getLogger().info("Registering commands...");
-		registerCommands();
-		
+		new Commands(this);
 		
 		plugin.getLogger().info("Configuration Registered!");
+		plugin.getLogger().info("Regisetering Events...");
+		registerEvents();
 		
-		//TODO: Input details about what is initialized.
+		plugin.getLogger().info("Eventes Registeted!");
+		plugin.getLogger().info("Registering Player Data...");
+		playerManager = new PlayerManager(this);
+		
+		plugin.getLogger().info("Player Data Registered!");
+		plugin.getLogger().info("Registering Gui..");
+		//TODO: Initialize Gui Manager
+		
+		plugin.getLogger().info("Gui Registeted!");
 		
 		for(String f : footer)
 		 plugin.getLogger().info(f);
 	}
 	
-	private void registerCommands() { this.commands = new Commands(this); }
-	
 	private void registerEvents() {
 		timer = new Updater(this);
 		timer.initTimer();
-	}
-	
-	/**
-	 * Registers any and all config-type files.
-	 */
-	private void registerConfiguration() {
-		
-		if(!plugin.getDataFolder().exists())
-			plugin.getDataFolder().mkdir();
-		
-		// Ensures folders exists
-		File file = new File(plugin.getDataFolder(), "Data");
-					
-		if(!file.exists())
-			file.mkdir();
-		file = new File(plugin.getDataFolder(), "Data/Player Data");
-		
-		if(!file.exists())
-			file.mkdir();
-		file = new File(plugin.getDataFolder(), "Data/Gui Data");
-		
-		if(!file.exists())
-			file.mkdir();
 	}
 	
 	/**
@@ -103,6 +79,7 @@ public class SCSettingsManager {
 	public SCSettings getPlugin() { return plugin; }
 	public PlayerManager getPlayerManager() { return playerManager; }
 	public ItemManager getItemManager() { return itemManager; }
+	public FileManager getFileManager() { return fileManager; }
 	public Blacklist getBlacklist() { return blacklist; }
 	public Updater getTimer() { return timer; }
 	
