@@ -5,6 +5,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 
 import com.soulcraft.Data.SCSettingsManager;
+import com.soulcraft.GUI.AbstractMenu;
 
 /**
  * Super class used for all EventHandler classes.
@@ -13,14 +14,16 @@ import com.soulcraft.Data.SCSettingsManager;
  * @version 1.0
  *
  */
-public abstract class AbstractHandler {
+public abstract class AbstractHandler<T extends AbstractMenu> {
 
 	private InventoryClickEvent event;
 	private SCSettingsManager manager;
+	private T menu;
 	
-	public AbstractHandler(InventoryClickEvent event, SCSettingsManager manager) {
+	public AbstractHandler(InventoryClickEvent event, SCSettingsManager manager, T menu) {
 		this.manager = manager;
 		this.event = event;
+		this.menu = menu;
 	}
 	
 	/**
@@ -60,4 +63,11 @@ public abstract class AbstractHandler {
 	 * @return True - if clicked outside the inventories
 	 */
 	public boolean clickedOutside() { return event.getClickedInventory() == null; }
+	
+	/**
+	 * Gets the menu that is associated with handling the
+	 * action of the menu.
+	 * @return Instance of AbstractMenu
+	 */
+	public T getMenu() { return menu; }
 }
