@@ -8,11 +8,12 @@ import com.soulcraft.Data.SCSettingsManager;
 import com.soulcraft.GUI.AbstractMenu;
 
 /**
- * Super class used for all EventHandler classes.
+ * Super class of all the event handling classes.
  *
  * @author Sommod
  * @version 1.0
  *
+ * @param <T> - Menu that is being used
  */
 public abstract class AbstractHandler<T extends AbstractMenu> {
 
@@ -24,6 +25,8 @@ public abstract class AbstractHandler<T extends AbstractMenu> {
 		this.manager = manager;
 		this.event = event;
 		this.menu = menu;
+		
+		execute();
 	}
 	
 	/**
@@ -70,4 +73,10 @@ public abstract class AbstractHandler<T extends AbstractMenu> {
 	 * @return Instance of AbstractMenu
 	 */
 	public T getMenu() { return menu; }
+	
+	/**
+	 * Used method that performs the actions of the
+	 * inventory action.
+	 */
+	public void execute() { }
 }
