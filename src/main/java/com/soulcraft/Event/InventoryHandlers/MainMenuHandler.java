@@ -56,6 +56,7 @@ public class MainMenuHandler extends AbstractHandler<MainMenu> {
 			case DECLINE_ALL:
 			case NEXT_PAGE:
 			case PREVIOUS_PAGE:
+			case CONFIRM:
 				return;
 								
 			default:
