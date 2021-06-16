@@ -227,7 +227,7 @@ public abstract class AbstractMenu {
 	public enum Button {
 		MAIN_MENU, FRIENDS_MENU, ADD_MENU, SETTINGS_MENU, 
 		NEXT_PAGE, PREVIOUS_PAGE, FRIEND_REQUEST_MENU,
-		DECLINE_ALL, ACCEPT_ALL, ERRROR;
+		DECLINE_ALL, ACCEPT_ALL, CONFIRM, ERRROR;
 		
 		/**
 		 * Gets the Button Enumeruation based on the String value
