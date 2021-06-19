@@ -38,7 +38,7 @@ public class FriendRequestHandler extends AbstractHandler<FriendRequestMenu> {
 				
 				if(item.getType() == Material.PLAYER_HEAD) {
 					if(getEvent().getClick() == ClickType.LEFT) {
-						String name = item.getItemMeta().getDisplayName().substring(4);
+						String name = item.getItemMeta().getDisplayName().substring(2);
 						PlayerData data = getManager().getPlayerManager().getPlayerData(getPlayer());
 						OfflinePlayer target = asPlayer(name);
 					
@@ -50,8 +50,8 @@ public class FriendRequestHandler extends AbstractHandler<FriendRequestMenu> {
 						getEvent().getInventory().setItem(getEvent().getSlot(), null);
 					
 					} else if(getEvent().getClick() == ClickType.RIGHT) {
-						getManager().getPlayerManager().getPlayerData(getPlayer()).removeFriendRequest(asPlayer(item.getItemMeta().getDisplayName().substring(4)));
-						getPlayer().sendMessage("§cYou have declined the friend request from §b" + item.getItemMeta().getDisplayName().substring(4));
+						getManager().getPlayerManager().getPlayerData(getPlayer()).removeFriendRequest(asPlayer(item.getItemMeta().getDisplayName().substring(2)));
+						getPlayer().sendMessage("§cYou have declined the friend request from §b" + item.getItemMeta().getDisplayName().substring(2));
 						getEvent().getInventory().setItem(getEvent().getSlot(), null);
 					}
 				}
