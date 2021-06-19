@@ -123,7 +123,11 @@ public abstract class AbstractMenu {
 	 * the none formatted inventory.
 	 * @return Inventory of Menu
 	 */
-	protected Inventory getBaseInventory() { return inv; }
+	protected Inventory getBaseInventory() {
+		Inventory clone = manager.getPlugin().getServer().createInventory(null, inv.getSize(), title);
+		clone.setContents(inv.getContents());
+		return clone;
+	}
 	
 	/**
 	 * Sets the stored Inventory object to the given parameter
@@ -216,7 +220,7 @@ public abstract class AbstractMenu {
 	 * symbol present, not '&'.
 	 * @return Title
 	 */
-	protected String getTitle() { return title.replace('&', '§'); }
+	protected String getTitle() { return title; }
 	
 	/**
 	 * Opens the Inventory for the given player.
