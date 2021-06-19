@@ -3,6 +3,9 @@ package com.soulcraft.GUI;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.bukkit.OfflinePlayer;
+import org.bukkit.entity.Player;
+
 import com.soulcraft.Data.SCSettingsManager;
 
 /**
@@ -15,10 +18,12 @@ import com.soulcraft.Data.SCSettingsManager;
 public class GuiManager {
 
 	private Map<Class<?>, AbstractMenu> menus;
+	private Map<OfflinePlayer, OfflinePlayer> players;
 	private SCSettingsManager manager;
 	
 	public GuiManager(SCSettingsManager manager) {
 		this.manager = manager;
+		players = new HashMap<OfflinePlayer, OfflinePlayer>();
 		init();
 	}
 	
@@ -74,4 +79,32 @@ public class GuiManager {
 		
 		return null;
 	}
+	
+	/**
+	 * Gets the Person who is receiving a gift based on the 
+	 * gifter. If the given person is not gifing any items,
+	 * this will normally return null.
+	 * @param player - Gifter
+	 * @return Receiver
+	 */
+	public OfflinePlayer getReceiver(Player player) { return players.get(player); }
+	
+	/**
+	 * Adds the data to connect to players when sending items to players.
+	 * This should not be used manually as this could cause errors. This
+	 * method is used via the event handling.
+	 * @param player - Gifter
+	 * @param target - Receiver
+	 */
+	@Deprecated
+	public void giftMenu(Player player, OfflinePlayer target) { players.put(player, target); }
+	
+	/**
+	 * Removes the data that connects the gifter to the receiver
+	 * of the gift. This is unnecessary to use manually and may
+	 * cause errors otherwise. This is used by the event handling.
+	 * @param gfter - Person sending gift
+	 */
+	@Deprecated
+	public void removeRecevier(OfflinePlayer gifter) { players.remove(gifter); }
 }
