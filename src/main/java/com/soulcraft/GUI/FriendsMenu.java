@@ -36,7 +36,7 @@ public class FriendsMenu extends AbstractMenu {
 		player.closeInventory();
 		page.put(player, 1);
 		player.openInventory(getBaseInventory());
-		setPlayerPage(player, 1);
+		openPage(player, 1);
 	}
 	
 	/**
@@ -44,7 +44,7 @@ public class FriendsMenu extends AbstractMenu {
 	 * @param player - Player to affect
 	 * @param page - Page to set
 	 */
-	public void setPlayerPage(Player player, int page) {
+	public void openPage(Player player, int page) {
 		PlayerData pData = getManager().getPlayerManager().getPlayerData(player);
 		
 		
