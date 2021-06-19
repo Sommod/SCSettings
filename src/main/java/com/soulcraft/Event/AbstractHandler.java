@@ -74,6 +74,33 @@ public abstract class AbstractHandler<T extends AbstractMenu> {
 	 */
 	public T getMenu() { return menu; }
 	
+	protected boolean openMenu() {
+		switch (menu.getButton(event.getSlot())) {
+		case MAIN_MENU:
+			manager.getGuiManager().getMainMenu().open(getPlayer());
+			return true;
+
+		case SETTINGS_MENU:
+			manager.getGuiManager().getSettingsMenu().open(getPlayer());
+			return true;
+			
+		case ADD_MENU:
+			manager.getGuiManager().getAddFriend().open(getPlayer());
+			return true;
+			
+		case FRIEND_REQUEST_MENU:
+			manager.getGuiManager().getFriendRequestMenu().open(getPlayer());
+			return true;
+			
+		case FRIENDS_MENU:
+			manager.getGuiManager().getFriendsMenu().open(getPlayer());
+			return true;
+			
+		default:
+			return false;
+		}
+	}
+	
 	/**
 	 * Used method that performs the actions of the
 	 * inventory action.
