@@ -27,23 +27,10 @@ public class SettingsMenuHandler extends AbstractHandler<SettingsMenu> {
 		
 		if(isTopInventory()) {
 			if(getMenu().isButton(getEvent().getSlot())) {
+				if(openMenu())
+					return;
+				
 				switch (getMenu().getButton(getEvent().getSlot())) {
-				case MAIN_MENU:
-					getManager().getGuiManager().getMainMenu().open(getPlayer());
-					return;
-					
-				case FRIENDS_MENU:
-					getManager().getGuiManager().getFriendsMenu().open(getPlayer());
-					return;
-					
-				case FRIEND_REQUEST_MENU:
-					getManager().getGuiManager().getFriendRequestMenu().open(getPlayer());
-					return;
-					
-				case ADD_MENU:
-					getManager().getGuiManager().getAddFriend().open(getPlayer());
-					return;
-					
 				case ACCEPT_ALL:
 				case CONFIRM:
 				case NEXT_PAGE:

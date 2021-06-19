@@ -30,23 +30,11 @@ public class AddFriendHandler extends AbstractHandler<AddFriend> {
 		
 		if(isTopInventory()) {
 			if(getMenu().isButton(getEvent().getSlot())) {
+				if(openMenu())
+					return;
+				
 				switch (getMenu().getButton(getEvent().getSlot())) {
-				case MAIN_MENU:
-					getManager().getGuiManager().getMainMenu().open(getPlayer());
-					return;
-					
-				case FRIEND_REQUEST_MENU:
-					getManager().getGuiManager().getFriendRequestMenu().open(getPlayer());
-					return;
-					
-				case FRIENDS_MENU:
-					getManager().getGuiManager().getFriendsMenu().open(getPlayer());
-					return;
-
-				case SETTINGS_MENU:
-					getManager().getGuiManager().getSettingsMenu().open(getPlayer());
-					return;
-					
+				
 				case ERRROR:
 					getPlayer().sendMessage("§cError, please information the Administration about the error code.\n§cError Code: AM-45");
 					return;

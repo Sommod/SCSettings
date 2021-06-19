@@ -4,7 +4,6 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 
 import com.soulcraft.Data.SCSettingsManager;
 import com.soulcraft.Event.AbstractHandler;
-import com.soulcraft.GUI.AbstractMenu.Button;
 import com.soulcraft.GUI.MainMenu;
 
 /**
@@ -26,12 +25,10 @@ public class MainMenuHandler extends AbstractHandler<MainMenu> {
 		getEvent().setCancelled(true); // Main Menu will always stop from grabbing the item.
 
 		if(isTopInventory() && getMenu().isButton(getEvent().getSlot())) {
-			Button pressed = getMenu().getButton(getEvent().getSlot());
-			
-			switch (pressed) {
-			case MAIN_MENU:
+			if(openMenu())
 				return;
-				
+			
+			switch (getMenu().getButton(getEvent().getSlot())) {
 			case ADD_MENU:
 				getManager().getGuiManager().getAddFriend().open(getPlayer());
 				return;
