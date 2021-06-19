@@ -78,6 +78,8 @@ public class FriendsMenu extends AbstractMenu {
 					player.getOpenInventory().getTopInventory().setItem(i, getFillItem());
 			}
 		}
+		
+		this.page.put(player, page);
 	}
 
 }
