@@ -211,6 +211,14 @@ public abstract class AbstractMenu {
 	protected ItemStack getFillItem() { return fillItem; }
 	
 	/**
+	 * Gets the title of the inventory. This returns
+	 * the formatted for Minecraft, ie '§' is the
+	 * symbol present, not '&'.
+	 * @return Title
+	 */
+	protected String getTitle() { return title.replace('&', '§'); }
+	
+	/**
 	 * Opens the Inventory for the given player.
 	 * @param player
 	 */
