@@ -32,6 +32,7 @@ public class GuiManager {
 		menus.put(GiftMenu.class, new GiftMenu(manager));
 		menus.put(SettingsMenu.class, new SettingsMenu(manager));
 		menus.put(AdminStorage.class, new AdminStorage(manager));
+		menus.put(ItemCollectionMenu.class, new ItemCollectionMenu(manager));
 	}
 	
 	public MainMenu getMainMenu() { return getMenu(MainMenu.class); }
@@ -41,6 +42,7 @@ public class GuiManager {
 	public GiftMenu getGiftMenu() { return getMenu(GiftMenu.class); }
 	public SettingsMenu getSettingsMenu() { return getMenu(SettingsMenu.class); }
 	public AdminStorage getAdminStorage() { return getMenu(AdminStorage.class); }
+	public ItemCollectionMenu getItemCollectionMenu() { return getMenu(ItemCollectionMenu.class); }
 	
 	@SuppressWarnings("unchecked")
 	protected <T extends AbstractMenu> T getMenu(Class<T> clazz) { return (T) menus.get(clazz); }
