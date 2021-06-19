@@ -24,6 +24,7 @@ public class FriendsMenuHandler extends AbstractHandler<FriendsMenu> {
 		super(event, manager, menu);
 	}
 	
+	@SuppressWarnings("deprecation")
 	@Override
 	public void execute() {
 		getEvent().setCancelled(true); // Defaulted to Cancel
@@ -51,10 +52,10 @@ public class FriendsMenuHandler extends AbstractHandler<FriendsMenu> {
 				if(item.getType() == Material.PLAYER_HEAD) {
 					OfflinePlayer target = asPlayer(item.getItemMeta().getDisplayName().substring(2));
 					
-					if(getEvent().getClick() == ClickType.LEFT)
+					if(getEvent().getClick() == ClickType.LEFT) {
 						getManager().getGuiManager().getGiftMenu().open(getPlayer());
-					
-					else if(getEvent().getClick() == ClickType.RIGHT) {
+						getManager().getGuiManager().giftMenu(getPlayer(), target);
+					} else if(getEvent().getClick() == ClickType.RIGHT) {
 						getManager().getPlayerManager().getPlayerData(getPlayer()).removeFriend(target);
 						getManager().getPlayerManager().getPlayerData(target).removeFriend(getPlayer());
 						
