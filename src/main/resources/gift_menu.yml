@@ -33,6 +33,24 @@ fill:
 # the config.yml file. Meaning that the fill/border will
 # not replace the items found within this section.
 slots:
+  4:
+    item: OAK_SIGN
+    amount: 1
+    name: '§f§oHow To'
+    enchanted: false
+    lore:
+      - '§6You can send items to your friends using this menu.'
+      - '§6Put an item into the empty slot and hit the SEND button.'
+    button: CONFIRM
+    
+  6:
+    item: GREEN_WOOL
+    amount: 1
+    name: '&a&lSend'
+    enchanted: false
+    lore:
+      - ' '
+      
   50:
     item: NETHER_STAR
     amount: 1
