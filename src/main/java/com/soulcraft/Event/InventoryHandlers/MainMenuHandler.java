@@ -45,7 +45,7 @@ public class MainMenuHandler extends AbstractHandler<MainMenu> {
 				getManager().getGuiManager().getSettingsMenu().open(getPlayer());
 				return;
 				
-			case ERRROR:
+			case ERROR:
 				getPlayer().sendMessage("§cError, please information the Administration about the error code.\n§cError Code: AM-45");
 				return;
 				

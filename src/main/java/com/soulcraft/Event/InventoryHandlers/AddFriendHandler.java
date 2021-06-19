@@ -35,7 +35,7 @@ public class AddFriendHandler extends AbstractHandler<AddFriend> {
 				
 				switch (getMenu().getButton(getEvent().getSlot())) {
 				
-				case ERRROR:
+				case ERROR:
 					getPlayer().sendMessage("§cError, please information the Administration about the error code.\n§cError Code: AM-45");
 					return;
 					

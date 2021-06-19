@@ -38,7 +38,7 @@ public class SettingsMenuHandler extends AbstractHandler<SettingsMenu> {
 				case DECLINE_ALL:
 					return;
 					
-				case ERRROR:
+				case ERROR:
 				default:
 					getPlayer().sendMessage("§Unknown Error, please contact the Administration. Error Code: SHM-21.");
 					break;
