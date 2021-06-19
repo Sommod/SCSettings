@@ -40,9 +40,18 @@ public class AdminStorageHandler extends AbstractHandler<AdminStorage> {
 					
 					if(displayItem == null)
 						return;
+					else if(!displayItem.getItemMeta().hasLore())
+						return;
 					
 					List<String> lore = displayItem.getItemMeta().getLore();
-					UUID id = UUID.fromString(lore.get(lore.size() - 1).substring(10));
+					UUID id;
+					
+					try {
+						id = UUID.fromString(lore.get(lore.size() - 1).substring(10));
+					} catch (IllegalArgumentException e) {
+						return;
+					}
+					
 					ItemData itemData = getManager().getItemManager().getItemData(id);
 					
 					if(itemData == null) {
