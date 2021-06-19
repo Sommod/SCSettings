@@ -46,6 +46,9 @@ public class AddFriend extends AbstractMenu {
 		Inventory toChange = getBaseInventory();
 		ItemStack head = new ItemStack(Material.PLAYER_HEAD);
 		
+		if(page * 28 > allPlayers.size() || page < 1)
+			return;
+		
 		// Used to clear inventory if not page 1
 		if(page != 1) {
 			for(int i = 10, k = ((page - 1) * 28); i < getBaseInventory().getSize() - 10 && k < allPlayers.size(); i++, k++) {
