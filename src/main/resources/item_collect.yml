@@ -1,0 +1,43 @@
+#########################
+# +-------------------+ #
+# | Item Collect Menu | #
+# +-------------------+ #
+#########################
+
+# This menu contains the information
+# that handles when a player is collecting
+# items that have been sent to them
+@ as gifts.
+
+# Sets the name of the menu.
+name: '&aItem Collection'
+
+# Creates either a border or fills all empty within the
+# menu of the given item.
+# fill type options => BORDER | FILL
+fill:
+  use: true
+  fill type: BORDER
+  item: GRAY_STAINED_GLASS_PANE
+  name: ' '
+  amount: 1
+  enchanted: false
+  lore:
+    - ' '
+
+# Sets the given slots of the inventory. These options
+# take priority over the fill/border option found within
+# the config.yml file. Meaning that the fill/border will
+# not replace the items found within this section.
+slots:
+  50:
+    item: NETHER_STAR
+    amount: 1
+    name: '&bBack to Main Menu'
+    lore:
+      - ' '
+    enchant: false
+    button: MAIN_MENU
+    
+    
+# End Transmission...
