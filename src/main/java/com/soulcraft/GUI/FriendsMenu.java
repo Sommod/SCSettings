@@ -47,6 +47,9 @@ public class FriendsMenu extends AbstractMenu {
 	public void openPage(Player player, int page) {
 		PlayerData pData = getManager().getPlayerManager().getPlayerData(player);
 		
+		if(pData.getAllFriends().size() < page * 28)
+			return;
+		
 		
 		// Removes any items from the menu
 		for(int i = 10; i < getBaseInventory().getSize() - 9; i++) {
@@ -81,5 +84,12 @@ public class FriendsMenu extends AbstractMenu {
 		
 		this.page.put(player, page);
 	}
+	
+	/**
+	 * Gets the current page the player is on.
+	 * @param player - player to get.
+	 * @return Integer value
+	 */
+	public int getPage(Player player) { return page.get(player); }
 
 }
