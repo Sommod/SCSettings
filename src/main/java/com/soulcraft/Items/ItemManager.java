@@ -215,7 +215,16 @@ public class ItemManager {
 	 * @return
 	 */
 	public List<ItemData> getStorage(OfflinePlayer player) {
-		return null;
+		List<ItemData> toReturn = new ArrayList<ItemData>();
+		
+		for(ItemData d : items.values()) {
+			if(d.isInReceiver() && d.getReceiver().equals(player))
+				toReturn.add(d);
+			else if(d.isInGifter() && d.getGifter().equals(player))
+				toReturn.add(d);
+		}
+		
+		return toReturn;
 	}
 	
 	/**
@@ -224,8 +233,23 @@ public class ItemManager {
 	 * @return List of Admin ItemData's
 	 */
 	public List<ItemData> getAdminStorage() {
-		return null;
+		List<ItemData> toReturn = new ArrayList<ItemData>();
+		
+		for(ItemData d : items.values()) {
+			if(!d.isInGifter() & !d.isInReceiver())
+				toReturn.add(d);
+		}
+		
+		return toReturn;
 	}
+	
+	/**
+	 * Gets the ItemData based on the stored UUID attached to the item.
+	 * If no UUID exists by the given UUID, then this will return null
+	 * @param id - UUID of item
+	 * @return ItemData - if found, otherwise null
+	 */
+	public ItemData getItemData(UUID id) { return items.get(id); }
 	
 	/**
 	 * Removes the given ItemData based on the UUID provided.
