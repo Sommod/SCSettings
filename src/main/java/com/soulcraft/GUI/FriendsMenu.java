@@ -49,6 +49,8 @@ public class FriendsMenu extends AbstractMenu {
 		
 		if(pData.getAllFriends().size() < page * 28)
 			return;
+		else if(page < 1)
+			return;
 		
 		
 		// Removes any items from the menu
