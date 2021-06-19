@@ -21,8 +21,8 @@ import com.soulcraft.Items.ItemData;
  */
 public class ItemCollectionMenu extends AbstractMenu {
 
-	public ItemCollectionMenu(SCSettingsManager manager, File configFile) {
-		super(manager, configFile);
+	public ItemCollectionMenu(SCSettingsManager manager) {
+		super(manager, new File(manager.getPlugin().getDataFolder(), "Data/Gui Data/Item Collection.yml"));
 	}
 
 	@Override
