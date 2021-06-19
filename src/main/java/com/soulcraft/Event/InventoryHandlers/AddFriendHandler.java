@@ -51,12 +51,18 @@ public class AddFriendHandler extends AbstractHandler<AddFriend> {
 					getPlayer().sendMessage("§cError, please information the Administration about the error code.\n§cError Code: AM-45");
 					return;
 					
-				case ACCEPT_ALL:
-				case DECLINE_ALL:
 				case NEXT_PAGE:
+					getManager().getGuiManager().getAddFriend().openNextPage(getPlayer(), getManager().getGuiManager().getAddFriend().getPlayer(getPlayer()) + 1);
+					return;
+					
 				case PREVIOUS_PAGE:
+					getManager().getGuiManager().getAddFriend().openNextPage(getPlayer(), getManager().getGuiManager().getAddFriend().getPlayer(getPlayer()) - 1);
+					return;
+					
 				case CONFIRM:
 				case ADD_MENU:
+				case ACCEPT_ALL:
+				case DECLINE_ALL:
 					return;
 									
 				default:
