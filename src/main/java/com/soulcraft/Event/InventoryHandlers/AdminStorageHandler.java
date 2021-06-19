@@ -35,7 +35,7 @@ public class AdminStorageHandler extends AbstractHandler<AdminStorage> {
 					return;
 			
 			} else {
-				if(getEvent().getSlot() % 9 != 0 && (getEvent().getSlot() + 1) % 9 != 0) {
+				if(getEvent().getSlot() % 9 != 0 && (getEvent().getSlot() + 1) % 9 != 0 && getEvent().getSlot() > 9 && getEvent().getSlot() < 45) {
 					ItemStack displayItem = getEvent().getInventory().getItem(getEvent().getSlot());
 					
 					if(displayItem == null)
