@@ -102,7 +102,8 @@ public class AddFriend extends AbstractMenu {
 				toChange = getFilledInventory(toChange);
 			
 			player.openInventory(toChange);
-		}
+		} else
+			playerPage.put(player, page);
 	}
 	
 	/**
