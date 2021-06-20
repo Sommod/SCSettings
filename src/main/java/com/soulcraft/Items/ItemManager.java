@@ -41,6 +41,10 @@ public class ItemManager {
 	 * @param manager - Manager of the plugin
 	 */
 	public ItemManager(SCSettingsManager manager) {
+		reload(manager);
+	}
+	
+	public void reload(SCSettingsManager manager) {
 		this.manager = manager;
 		File check = new File(manager.getPlugin().getDataFolder(), "Data/Item Data/Items.sc");
 		

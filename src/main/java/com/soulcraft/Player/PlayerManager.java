@@ -34,8 +34,11 @@ public class PlayerManager {
 	private SCSettingsManager manager;
 
 	public PlayerManager(SCSettingsManager manager) {
+		reload(manager);
+	}
+	
+	public void reload(SCSettingsManager manager) {
 		this.manager = manager;
-		
 		data = new HashMap<UUID, PlayerData>();
 		File folder = new File(manager.getPlugin().getDataFolder(), "Data/Player Data");
 		
