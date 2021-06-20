@@ -43,20 +43,20 @@ public class FileManager {
 		if(!manager.getPlugin().getDataFolder().exists())
 			manager.getPlugin().getDataFolder().mkdir();
 		
-		loc.put("CONFIG", basePath + "config.yml");
-		loc.put("HELP", basePath + "help.txt");
-		loc.put("DATA_FOLDER", basePath + "Data");
-		loc.put("PLAYER_DATA", basePath + "Data/Player Data");
-		loc.put("GUI_DATA", basePath + "Data/Gui Data");
-		loc.put("MAIN_MENU", basePath + "Data/Gui Data/Main Menu.yml");
-		loc.put("ADD_FRIEND", basePath + "Data/Gui Data/Add Friend.yml");
-		loc.put("FRIEND_REQUEST", basePath + "Data/Gui Data/Friend Request.yml");
-		loc.put("FRIENDS_MENU", basePath + "Data/Gui Data/Friends Menu.yml");
-		loc.put("GIFT_MENU", basePath + "Data/Gui Data/Gift Menu.yml");
-		loc.put("ADMIN_STORAGE", basePath + "Data/Gui Data/Admin Storage.yml");
-		loc.put("SETTINGS_MENU", basePath + "Data/Gui Data/Settings Menu.yml");
-		loc.put("ITEM_COLLECTION", basePath + "Data/Gui Data/Item Collection.yml");
-		loc.put("BANKNOTE_MENU", basePath + "Data/Gui Data/BankNote Menu.yml");
+		loc.put("CONFIG", basePath + "/config.yml");
+		loc.put("HELP", basePath + "/help.txt");
+		loc.put("DATA_FOLDER", basePath + "/Data");
+		loc.put("PLAYER_DATA", basePath + "/Data/Player Data");
+		loc.put("GUI_DATA", basePath + "/Data/Gui Data");
+		loc.put("MAIN_MENU", basePath + "/Data/Gui Data/Main Menu.yml");
+		loc.put("ADD_FRIEND", basePath + "/Data/Gui Data/Add Friend.yml");
+		loc.put("FRIEND_REQUEST", basePath + "/Data/Gui Data/Friend Request.yml");
+		loc.put("FRIENDS_MENU", basePath + "/Data/Gui Data/Friends Menu.yml");
+		loc.put("GIFT_MENU", basePath + "/Data/Gui Data/Gift Menu.yml");
+		loc.put("ADMIN_STORAGE", basePath + "/Data/Gui Data/Admin Storage.yml");
+		loc.put("SETTINGS_MENU", basePath + "/Data/Gui Data/Settings Menu.yml");
+		loc.put("ITEM_COLLECTION", basePath + "/Data/Gui Data/Item Collection.yml");
+		loc.put("BANKNOTE_MENU", basePath + "/Data/Gui Data/BankNote Menu.yml");
 		
 		writeFile(getStream("config.yml"), getFile(loc.get("CONFIG")));
 		writeFile(getStream("help.txt"), getFile(loc.get("HELP")));
@@ -76,7 +76,7 @@ public class FileManager {
 	
 	// Gets the file as a InputStream that can be
 	// used to write the bytes into a file.
-	private InputStream getStream(String fileName) { return manager.getPlugin().getClass().getResourceAsStream("resources/" + fileName); }
+	private InputStream getStream(String fileName) { return manager.getPlugin().getClass().getResourceAsStream("/resources/" + fileName); }
 	
 	/**
 	 * When this is issued, the files are re-obtained
@@ -268,7 +268,7 @@ public class FileManager {
 	// This is used instead of storing
 	// the files themselves because
 	// the files can change during the
-	// server running, os new instances
+	// server running, as new instances
 	// are needed for each usage.
 	private File getFile(String path) {	return new File(path); }
 }
