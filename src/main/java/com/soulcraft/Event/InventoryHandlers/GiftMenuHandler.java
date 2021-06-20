@@ -35,10 +35,11 @@ public class GiftMenuHandler extends AbstractHandler<GiftMenu> {
 				case CONFIRM:
 					if(getEvent().getInventory().getItem(23) == null) {
 						getPlayer().sendMessage("§cNo item to send to friend.");
+						return;
 					}
 					
 					getManager().getItemManager().addItem(getPlayer(), getManager().getGuiManager().getReceiver(getPlayer()), getEvent().getInventory().getItem(23));
-					getEvent().getInventory().setItem(23, null);
+					getEvent().getInventory().clear(23);
 					getPlayer().sendMessage("§aItem has been set as a gift.");
 					break;
 
