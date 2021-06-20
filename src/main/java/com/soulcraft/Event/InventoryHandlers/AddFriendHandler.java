@@ -68,20 +68,21 @@ public class AddFriendHandler extends AbstractHandler<AddFriend> {
 						if(data.isFriend(name))
 							return;
 						else if(data.isFriendRequest(asPlayer(name))) {
-							
+							if(getEvent().getClick() == ClickType.LEFT) {
+								data.removeFriendRequest(asPlayer(name));
+								data.addFriend(asPlayer(name));
+								getManager().getPlayerManager().getPlayerData(asPlayer(name)).addFriend(getPlayer());
+								getPlayer().sendMessage("§aYou have accepted the friend request. You are now friends with §b" + name + "§a.");
+							} else if(getEvent().getClick() == ClickType.RIGHT) {
+								data.removeFriendRequest(asPlayer(name));
+								getPlayer().sendMessage("§cYou have declined the friend request.");
+							}
 						} else {
 							if(getManager().getPlayerManager().getPlayerData(asPlayer(name)).getChatSettings().isAllowingFriendRequest()) {
-								if(getEvent().getClick() == ClickType.LEFT) {
-									data.addFriend(asPlayer(name));
-									data.removeFriendRequest(asPlayer(name));
-									getManager().getPlayerManager().getPlayerData(asPlayer(name)).addFriend(getPlayer());
-									getPlayer().sendMessage("§b" + name + "§a has been added as a friend!");
-								} else {
-									data.removeFriendRequest(asPlayer(name));
-									getPlayer().sendMessage("§cYou have declined the friend requests...");
-								}
+								getManager().getPlayerManager().getPlayerData(asPlayer(name)).addFriendRequest(getPlayer());
+								getPlayer().sendMessage("§bYou have sent a friend request to §6" + name + "§b.");
 							} else
-								getPlayer().sendMessage("§b" + name + "§c is not accepting friend requests right now.");
+								getPlayer().sendMessage("§cThat player is not accepting friend requests at this moment...");
 						}
 					}
 				}
