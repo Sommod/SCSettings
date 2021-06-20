@@ -6,6 +6,7 @@ import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -84,6 +85,12 @@ public class EventsHandler implements Listener {
 				}
 			}
 		}
+	}
+	
+	@EventHandler
+	public void playerJoin(PlayerJoinEvent event) {
+		if(manager.getPlayerManager().getPlayerData(event.getPlayer()) == null)
+			manager.getPlayerManager().createNewPlayerData(event.getPlayer());
 	}
 	
 	// Creates the correct corresponding class the handles
