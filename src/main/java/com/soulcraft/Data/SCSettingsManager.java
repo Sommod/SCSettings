@@ -6,6 +6,8 @@ import com.soulcraft.GUI.GuiManager;
 import com.soulcraft.Items.ItemManager;
 import com.soulcraft.Player.PlayerManager;
 
+import net.milkbowl.vault.economy.Economy;
+
 /**
  * Contains all the manager-type classes. Initializes Any manager
  * classes as well as registering Events that are handled within
@@ -28,6 +30,8 @@ public class SCSettingsManager {
 	private GuiManager guiManager;
 	private Blacklist blacklist;
 	private Updater timer;
+	
+	private Economy economy;
 	
 	/**
 	 * Creates a new Manager object for the SCSettings plugin. This activates
@@ -85,5 +89,6 @@ public class SCSettingsManager {
 	public GuiManager getGuiManager() { return guiManager; }
 	public Blacklist getBlacklist() { return blacklist; }
 	public Updater getTimer() { return timer; }
+	public Economy getEconomy() { return economy; }
 	
 }
