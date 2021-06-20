@@ -98,6 +98,8 @@ public class Commands implements CommandExecutor {
 					
 				case "version":
 				case "v":
+				case "info":
+				case "i":
 					new Version(sender, command, args, manager);
 					break;
 					
