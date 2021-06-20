@@ -69,10 +69,10 @@ public class BankNoteHandler extends AbstractHandler<BankNoteMenu> {
 				ItemMeta meta = item.getItemMeta();
 				List<String> lore = meta.getLore();
 				
-				lore.add("§0§kTIaUctETtiiAAbN");
+				lore.add("§0§kTIaUctETtiiAAbN"); // Contains code in lore to ensure actual banknote.
 				
 				meta.setDisplayName("§a§l$" + meta.getDisplayName().split("$")[1]);
-				meta.setLore(lore); // Contains code in lore to ensure actual banknote.
+				meta.setLore(lore);
 				
 				item.setItemMeta(meta);
 				
