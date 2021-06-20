@@ -31,7 +31,7 @@ public class FriendRequestMenu extends AbstractMenu {
 		Inventory toOpen = getBaseInventory();
 		PlayerData pData = getManager().getPlayerManager().getPlayerData(player);
 		
-		for(int i = 10, k = 0; i < toOpen.getSize() - 9 && k < pData.getAllFriendRequests().size(); i++) {
+		for(int i = 10, k = 0; i < toOpen.getSize() - 9 && k < pData.getAllFriendRequests().size(); i++, k++) {
 			if((i + 1) % 9 == 0) {
 				i++;
 				continue;
