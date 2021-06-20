@@ -56,6 +56,7 @@ public class FileManager {
 		loc.put("ADMIN_STORAGE", basePath + "Data/Gui Data/Admin Storage.yml");
 		loc.put("SETTINGS_MENU", basePath + "Data/Gui Data/Settings Menu.yml");
 		loc.put("ITEM_COLLECTION", basePath + "Data/Gui Data/Item Collection.yml");
+		loc.put("BANKNOTE_MENU", basePath + "Data/Gui Data/BankNote Menu.yml");
 		
 		writeFile(getStream("config.yml"), getFile(loc.get("CONFIG")));
 		writeFile(getStream("help.txt"), getFile(loc.get("HELP")));
@@ -70,6 +71,7 @@ public class FileManager {
 		writeFile(getStream("admin_storage.yml"), getFile(loc.get("ADMIN_STORAGE")));
 		writeFile(getStream("settings_menu.yml"), getFile(loc.get("SETTINGS_MENU")));
 		writeFile(getStream("item_collect.yml"), getFile(loc.get("ITEM_COLLECTION")));
+		writeFile(getStream("bank.yml"), getFile(loc.get("BANKNOTE_MENU")));
 	}
 	
 	// Gets the file as a InputStream that can be
@@ -213,6 +215,14 @@ public class FileManager {
 		case "item collection":
 		case "item_collection":
 			return "ITEM_COLLECTION";
+			
+		case "bank":
+		case "banknote":
+		case "bank menu":
+		case "bank_menu":
+		case "banknote menu":
+		case "banknote_menu":
+			return "BANKNOTE_MENU";
 			
 		default:
 			return null;
