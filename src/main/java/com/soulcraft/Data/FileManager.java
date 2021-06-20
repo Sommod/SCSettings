@@ -76,7 +76,7 @@ public class FileManager {
 	
 	// Gets the file as a InputStream that can be
 	// used to write the bytes into a file.
-	private InputStream getStream(String fileName) { return manager.getPlugin().getClass().getResourceAsStream(fileName); }
+	private InputStream getStream(String fileName) { return manager.getPlugin().getClass().getResourceAsStream("resources/" + fileName); }
 	
 	/**
 	 * When this is issued, the files are re-obtained
