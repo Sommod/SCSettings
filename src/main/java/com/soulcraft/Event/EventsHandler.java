@@ -89,7 +89,7 @@ public class EventsHandler implements Listener {
 	
 	@EventHandler
 	public void playerJoin(PlayerJoinEvent event) {
-		if(manager.getPlayerManager().getPlayerData(event.getPlayer()) == null)
+		if(!manager.getPlayerManager().exists(event.getPlayer()))
 			manager.getPlayerManager().createNewPlayerData(event.getPlayer());
 	}
 	
