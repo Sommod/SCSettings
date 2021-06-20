@@ -3,6 +3,7 @@ package com.soulcraft.Commands;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
 import com.soulcraft.Data.SCSettingsManager;
 
@@ -28,7 +29,10 @@ public class Commands implements CommandExecutor {
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 		if(command.getName().equalsIgnoreCase("SCSettings")) {
 			if(args.length == 0) {
-				new Version(sender, command, args, manager);
+				if(sender instanceof Player)
+					manager.getGuiManager().getMainMenu().open((Player) sender);
+				else
+					new Version(sender, command, args, manager);
 			} else {
 				switch (args[0].toLowerCase()) {
 				case "help":
@@ -90,6 +94,11 @@ public class Commands implements CommandExecutor {
 				case "reload":
 				case "rl":
 					new Reload(sender, command, args, manager);
+					break;
+					
+				case "version":
+				case "v":
+					new Version(sender, command, args, manager);
 					break;
 					
 				default:
