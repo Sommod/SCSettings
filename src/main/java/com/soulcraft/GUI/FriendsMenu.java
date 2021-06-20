@@ -34,9 +34,9 @@ public class FriendsMenu extends AbstractMenu {
 	@Override
 	public void open(Player player) {
 		player.closeInventory();
-		page.put(player, 1);
+		page.put(player, 0);
 		player.openInventory(getBaseInventory());
-		openPage(player, 1);
+		openPage(player, 0);
 	}
 	
 	/**
@@ -49,7 +49,7 @@ public class FriendsMenu extends AbstractMenu {
 		
 		if(pData.getAllFriends().size() < page * 28)
 			return;
-		else if(page < 1)
+		else if(page < 0)
 			return;
 		
 		
