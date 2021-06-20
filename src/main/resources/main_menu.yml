@@ -61,7 +61,7 @@ slots:
     name: '&dCollect Gifts'
     lore:
       - '&7&oOpens the menu to collect any gifts that either.'
-      - '&7&owere sent or returned to you.
+      - '&7&owere sent or returned to you.'
     enchant: false
     button: COLLECT_MENU
     
