@@ -23,8 +23,8 @@ import com.soulcraft.Items.ItemData;
  */
 public class ItemCollectHandler extends AbstractHandler<ItemCollectionMenu> {
 
-	public ItemCollectHandler(InventoryClickEvent event, SCSettingsManager manager, ItemCollectionMenu menu) {
-		super(event, manager, menu);
+	public ItemCollectHandler(InventoryClickEvent event, SCSettingsManager manager) {
+		super(event, manager, manager.getGuiManager().getItemCollectionMenu());
 	}
 	
 	@Override

@@ -21,8 +21,8 @@ import com.soulcraft.Items.ItemData;
  */
 public class AdminStorageHandler extends AbstractHandler<AdminStorage> {
 
-	public AdminStorageHandler(InventoryClickEvent event, SCSettingsManager manager, AdminStorage menu) {
-		super(event, manager, menu);
+	public AdminStorageHandler(InventoryClickEvent event, SCSettingsManager manager) {
+		super(event, manager, manager.getGuiManager().getAdminStorage());
 	}
 	
 	@Override

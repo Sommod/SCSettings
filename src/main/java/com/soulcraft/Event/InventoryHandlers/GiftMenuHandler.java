@@ -15,8 +15,8 @@ import com.soulcraft.GUI.GiftMenu;
  */
 public class GiftMenuHandler extends AbstractHandler<GiftMenu> {
 
-	public GiftMenuHandler(InventoryClickEvent event, SCSettingsManager manager, GiftMenu menu) {
-		super(event, manager, menu);
+	public GiftMenuHandler(InventoryClickEvent event, SCSettingsManager manager) {
+		super(event, manager, manager.getGuiManager().getGiftMenu());
 	}
 	
 	@SuppressWarnings("deprecation")

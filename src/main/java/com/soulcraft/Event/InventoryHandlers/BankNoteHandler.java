@@ -22,8 +22,8 @@ import com.soulcraft.GUI.BankNoteMenu;
  */
 public class BankNoteHandler extends AbstractHandler<BankNoteMenu> {
 
-	public BankNoteHandler(InventoryClickEvent event, SCSettingsManager manager, BankNoteMenu menu) {
-		super(event, manager, menu);
+	public BankNoteHandler(InventoryClickEvent event, SCSettingsManager manager) {
+		super(event, manager, manager.getGuiManager().getBanknoteMenu());
 	}
 	
 	@Override

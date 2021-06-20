@@ -17,8 +17,8 @@ import com.soulcraft.Player.PlayerData;
  */
 public class SettingsMenuHandler extends AbstractHandler<SettingsMenu> {
 
-	public SettingsMenuHandler(InventoryClickEvent event, SCSettingsManager manager, SettingsMenu menu) {
-		super(event, manager, menu);
+	public SettingsMenuHandler(InventoryClickEvent event, SCSettingsManager manager) {
+		super(event, manager, manager.getGuiManager().getSettingsMenu());
 	}
 	
 	@Override

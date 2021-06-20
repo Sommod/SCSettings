@@ -20,8 +20,8 @@ import com.soulcraft.Player.PlayerData;
  */
 public class FriendRequestHandler extends AbstractHandler<FriendRequestMenu> {
 
-	public FriendRequestHandler(InventoryClickEvent event, SCSettingsManager manager, FriendRequestMenu menu) {
-		super(event, manager, menu);
+	public FriendRequestHandler(InventoryClickEvent event, SCSettingsManager manager) {
+		super(event, manager, manager.getGuiManager().getFriendRequestMenu());
 	}
 	
 	@Override

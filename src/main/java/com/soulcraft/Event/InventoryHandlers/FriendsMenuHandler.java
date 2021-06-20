@@ -20,8 +20,8 @@ import com.soulcraft.Player.PlayerData;
  */
 public class FriendsMenuHandler extends AbstractHandler<FriendsMenu> {
 
-	public FriendsMenuHandler(InventoryClickEvent event, SCSettingsManager manager, FriendsMenu menu) {
-		super(event, manager, menu);
+	public FriendsMenuHandler(InventoryClickEvent event, SCSettingsManager manager) {
+		super(event, manager, manager.getGuiManager().getFriendsMenu());
 	}
 	
 	@SuppressWarnings("deprecation")

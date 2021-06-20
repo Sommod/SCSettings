@@ -20,8 +20,8 @@ import com.soulcraft.Player.PlayerData;
  */
 public class AddFriendHandler extends AbstractHandler<AddFriend> {
 
-	public AddFriendHandler(InventoryClickEvent event, SCSettingsManager manager, AddFriend menu) {
-		super(event, manager, menu);
+	public AddFriendHandler(InventoryClickEvent event, SCSettingsManager manager) {
+		super(event, manager, manager.getGuiManager().getAddFriend());
 	}
 	
 	@Override
