@@ -7,7 +7,7 @@
 # This menu contains the information
 # that handles when a player is collecting
 # items that have been sent to them
-@ as gifts.
+# as gifts.
 
 # Sets the name of the menu.
 name: '&aItem Collection'
