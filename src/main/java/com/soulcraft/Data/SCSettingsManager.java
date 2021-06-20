@@ -2,6 +2,7 @@ package com.soulcraft.Data;
 
 import com.soulcraft.SCSettings;
 import com.soulcraft.Commands.Commands;
+import com.soulcraft.Event.EventsHandler;
 import com.soulcraft.GUI.GuiManager;
 import com.soulcraft.Items.ItemManager;
 import com.soulcraft.Player.PlayerManager;
@@ -28,6 +29,7 @@ public class SCSettingsManager {
 	private ItemManager itemManager;
 	private FileManager fileManager;
 	private GuiManager guiManager;
+	private EventsHandler events;
 	private Blacklist blacklist;
 	private Updater timer;
 	
@@ -47,16 +49,13 @@ public class SCSettingsManager {
 		
 		plugin.getLogger().info("Registering Configuration...");
 		fileManager = new FileManager(this);
+		blacklist = new Blacklist(this);
 		
 		plugin.getLogger().info("Configuration complete");
 		plugin.getLogger().info("Registering commands...");
 		new Commands(this);
 		
 		plugin.getLogger().info("Configuration Registered!");
-		plugin.getLogger().info("Regisetering Events...");
-		registerEvents();
-		
-		plugin.getLogger().info("Eventes Registeted!");
 		plugin.getLogger().info("Registering Player Data...");
 		playerManager = new PlayerManager(this);
 		
@@ -65,6 +64,16 @@ public class SCSettingsManager {
 		guiManager = new GuiManager(this);
 		
 		plugin.getLogger().info("Gui Registeted!");
+		plugin.getLogger().info("Registering Items...");
+		itemManager = new ItemManager(this);
+		
+		plugin.getLogger().info("Items Registered!");
+		plugin.getLogger().info("Regisetering Events...");
+		registerEvents();
+		
+		plugin.getLogger().info("Events Registeted!");
+		plugin.getLogger().info("Registering Extra Data...");
+		economy = plugin.getServer().getServicesManager().getRegistration(Economy.class).getProvider();
 		
 		for(String f : footer)
 		 plugin.getLogger().info(f);
@@ -73,13 +82,33 @@ public class SCSettingsManager {
 	private void registerEvents() {
 		timer = new Updater(this);
 		timer.initTimer();
+		events = new EventsHandler(this);
+	}
+	
+	public void onShutdown() {
+		plugin.getLogger().info("Shutting down.. Running saving processess");
+		plugin.getLogger().info("Saving Player Data");
+		playerManager.saveData();
+		
+		plugin.getLogger().info("Saving Item Data");
+		itemManager.save();
+		
+		plugin.getLogger().info("Removing Events");
+		getTimer().cancelTimer();
+		events.unRegisterEvents(this);
+		
+		plugin.getLogger().info("Save Complete. Shutting down... D:");
 	}
 	
 	/**
 	 * Used to reload the entire plugin.
 	 */
 	public void reload() {
-		
+		fileManager.reload();
+		playerManager.reload(this);
+		itemManager.reload(this);
+		guiManager.reload(this);
+		blacklist.reload(this);
 	}
 	
 	public SCSettings getPlugin() { return plugin; }
