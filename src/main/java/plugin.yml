@@ -1,6 +1,7 @@
 name: SCSettings
 main: com.soulcraft.SCSettings
 version: 1.1
+api-version: 1.16
 authors: [Sommod]
 description: A Friend system for survival-based servers.
 
