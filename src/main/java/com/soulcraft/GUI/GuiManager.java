@@ -22,6 +22,10 @@ public class GuiManager {
 	private SCSettingsManager manager;
 	
 	public GuiManager(SCSettingsManager manager) {
+		reload(manager);
+	}
+	
+	public void reload(SCSettingsManager manager) {
 		this.manager = manager;
 		players = new HashMap<OfflinePlayer, OfflinePlayer>();
 		init();
