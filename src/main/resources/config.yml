@@ -6,14 +6,6 @@
 
 # Main Configuration section
 friends:
-
-  # This sets how the plugin will handle. By default, any command
-  # of the plugin (excluding the RELOAD command) will not activate,
-  # but rather open the GUI menu. You can disable this and allow
-  # commands to activate without the need of the GUI. This DOES NOT
-  # deactivate the GUI, just adds the commands to be usage instead
-  # of a forced into GUI usage.
-  gui override: true
   
   # Sets the time limit of the gifts. Should the receiver
   # not claim the given gift within the given time, then the
