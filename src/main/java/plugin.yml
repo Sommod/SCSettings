@@ -1,6 +1,6 @@
 name: SCSettings
 main: com.soulcraft.SCSettings
-version: 1.3
+version: 1.5.2
 api-version: 1.16
 authors: [Sommod]
 depend: [Vault]
