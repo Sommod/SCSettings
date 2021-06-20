@@ -96,6 +96,10 @@ public abstract class AbstractHandler<T extends AbstractMenu> {
 			manager.getGuiManager().getFriendsMenu().open(getPlayer());
 			return true;
 			
+		case COLLECT_MENU:
+			manager.getGuiManager().getItemCollectionMenu().open(getPlayer());
+			return true;
+			
 		default:
 			return false;
 		}
