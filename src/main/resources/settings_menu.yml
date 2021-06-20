@@ -48,7 +48,7 @@ items:
     name: '&bFriend Join Notification'
     lore:
       - '&7Change whether you are notified when'
-      - '&7a friend joins the server.
+      - '&7a friend joins the server.'
     enchanted: false
     
   allow requests:
