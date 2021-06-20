@@ -295,11 +295,11 @@ public class ItemManager {
 		
 		for(String section : calc) {
 			if(section.toLowerCase().contains("d"))
-				totalTime += ((((Long.parseLong(section.substring(0, section.length())) * 24) * 60) * 60) * 1000);
+				totalTime += ((((Long.parseLong(section.substring(0, section.length() - 1)) * 24) * 60) * 60) * 1000);
 			else if(section.toLowerCase().contains("h"))
-				totalTime += (((Long.parseLong(section.substring(0, section.length())) * 60) * 60) * 1000);
+				totalTime += (((Long.parseLong(section.substring(0, section.length() - 1)) * 60) * 60) * 1000);
 			else
-				totalTime += ((Long.parseLong(section.substring(0, section.length())) * 60) * 1000);
+				totalTime += ((Long.parseLong(section.substring(0, section.length() - 1)) * 60) * 1000);
 		}
 		
 		return totalTime;
