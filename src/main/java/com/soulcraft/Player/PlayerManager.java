@@ -49,6 +49,8 @@ public class PlayerManager {
 			if(!data.containsKey(check.getUniqueId()))
 				data.put(check.getUniqueId(), new PlayerData(check));
 		}
+		
+		saveData();
 	}
 	
 	// Grabs the data from the stored files folder
