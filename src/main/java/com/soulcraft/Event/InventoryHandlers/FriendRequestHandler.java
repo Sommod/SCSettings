@@ -37,22 +37,29 @@ public class FriendRequestHandler extends AbstractHandler<FriendRequestMenu> {
 				ItemStack item = getEvent().getInventory().getItem(getEvent().getSlot());
 				
 				if(item.getType() == Material.PLAYER_HEAD) {
-					if(getEvent().getClick() == ClickType.LEFT) {
-						String name = item.getItemMeta().getDisplayName().substring(2);
-						PlayerData data = getManager().getPlayerManager().getPlayerData(getPlayer());
-						OfflinePlayer target = asPlayer(name);
+					String name = item.getItemMeta().getDisplayName().substring(2);
+					OfflinePlayer target = asPlayer(name);
 					
+					if(getEvent().getClick() == ClickType.LEFT) {
+						PlayerData data = getManager().getPlayerManager().getPlayerData(getPlayer());
+						
 						data.removeFriendRequest(target);
 						data.addFriend(target);
 						getManager().getPlayerManager().getPlayerData(target).addFriend(getPlayer());
 						
 						getPlayer().sendMessage("§aYou have added §b" + name + "§a as a friend.");
 						getEvent().getInventory().setItem(getEvent().getSlot(), null);
+						
+						if(target.isOnline())
+							target.getPlayer().sendMessage("§6§lNotice: §b" + getPlayer().getName() + "§f has added you as a friend!");
 					
 					} else if(getEvent().getClick() == ClickType.RIGHT) {
-						getManager().getPlayerManager().getPlayerData(getPlayer()).removeFriendRequest(asPlayer(item.getItemMeta().getDisplayName().substring(2)));
-						getPlayer().sendMessage("§cYou have declined the friend request from §b" + item.getItemMeta().getDisplayName().substring(2));
+						getManager().getPlayerManager().getPlayerData(getPlayer()).removeFriendRequest(target);
+						getPlayer().sendMessage("§cYou have declined the friend request from §b" + target.getName());
 						getEvent().getInventory().setItem(getEvent().getSlot(), null);
+						
+						if(target.isOnline())
+							target.getPlayer().sendMessage("§6§lNotice: §b" + getPlayer().getName() + "§f has declined being your friend...");
 					}
 				}
 			}
