@@ -73,14 +73,24 @@ public class AddFriendHandler extends AbstractHandler<AddFriend> {
 								data.addFriend(asPlayer(name));
 								getManager().getPlayerManager().getPlayerData(asPlayer(name)).addFriend(getPlayer());
 								getPlayer().sendMessage("§aYou have accepted the friend request. You are now friends with §b" + name + "§a.");
+								
+								if(asPlayer(name).isOnline())
+									asPlayer(name).getPlayer().sendMessage("§6§lNotice: §b" + getPlayer().getName() + "§f has accepted you as a friend!");
+								
 							} else if(getEvent().getClick() == ClickType.RIGHT) {
 								data.removeFriendRequest(asPlayer(name));
 								getPlayer().sendMessage("§cYou have declined the friend request.");
+								
+								if(asPlayer(name).isOnline())
+									asPlayer(name).getPlayer().sendMessage("§6§lNotice: §b" + getPlayer().getName() + "§f has declined to be your friend...");
 							}
 						} else {
 							if(getManager().getPlayerManager().getPlayerData(asPlayer(name)).getChatSettings().isAllowingFriendRequest()) {
 								getManager().getPlayerManager().getPlayerData(asPlayer(name)).addFriendRequest(getPlayer());
 								getPlayer().sendMessage("§bYou have sent a friend request to §6" + name + "§b.");
+								
+								if(asPlayer(name).isOnline())
+									asPlayer(name).getPlayer().sendMessage("§6§lNotice: §b" + getPlayer().getName() + "§f has sent you a friend request!");
 							} else
 								getPlayer().sendMessage("§cThat player is not accepting friend requests at this moment...");
 						}
