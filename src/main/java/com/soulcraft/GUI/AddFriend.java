@@ -77,7 +77,7 @@ public class AddFriend extends AbstractMenu {
 			else if(getManager().getPlayerManager().getPlayerData(allPlayers.get(k)).isFriendRequest(player))
 				meta.setLore(Arrays.asList("§cCancel Request"));
 			else
-				meta.setLore(Arrays.asList("§Add Friend"));
+				meta.setLore(Arrays.asList("§aAdd Friend"));
 			
 			head.setItemMeta(meta);
 			
