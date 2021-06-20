@@ -41,7 +41,6 @@ slots:
     lore:
       - '§6You can send items to your friends using this menu.'
       - '§6Put an item into the empty slot and hit the SEND button.'
-    button: CONFIRM
     
   6:
     item: GREEN_WOOL
@@ -50,7 +49,8 @@ slots:
     enchanted: false
     lore:
       - ' '
-      
+    button: CONFIRM
+    
   50:
     item: NETHER_STAR
     amount: 1
