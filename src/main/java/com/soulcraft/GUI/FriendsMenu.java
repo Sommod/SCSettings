@@ -27,7 +27,7 @@ public class FriendsMenu extends AbstractMenu {
 	private Map<Player, Integer> page;
 	
 	public FriendsMenu(SCSettingsManager manager) {
-		super(manager, new File(manager.getPlugin().getDataFolder(), "Data/Gui Data/Friend Menu.yml"));
+		super(manager, new File(manager.getPlugin().getDataFolder(), "Data/Gui Data/Friends Menu.yml"));
 		page = new HashMap<Player, Integer>();
 	}
 
