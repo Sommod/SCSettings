@@ -2,6 +2,8 @@ package com.soulcraft;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
+import com.soulcraft.Data.SCSettingsManager;
+
 /**
  * Main class of the plugin. Nothing here is stored expect the PluginManager.
  * All initializations are found within the PluginManager class.<br>
@@ -26,14 +28,17 @@ import org.bukkit.plugin.java.JavaPlugin;
  */
 public class SCSettings extends JavaPlugin {
 	
+	private SCSettingsManager manager;
+	
 	@Override
 	public void onEnable() {
-		super.onEnable();
+		manager = new SCSettingsManager(this);
 	}
 	
 	@Override
 	public void onDisable() {
-		super.onDisable();
+		if(manager != null)
+			manager.onShutdown();
 	}
 
 }
