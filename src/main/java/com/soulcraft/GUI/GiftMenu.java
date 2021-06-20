@@ -30,7 +30,7 @@ public class GiftMenu extends AbstractMenu {
 		if(isUsingFillOption() && !isBorder())
 			toOpen = getFilledInventory(toOpen);
 		
-		toOpen.setItem(23, null);
+		toOpen.setItem(22, null);
 		player.closeInventory();
 		player.openInventory(toOpen);
 	}
