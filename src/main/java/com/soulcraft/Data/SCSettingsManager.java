@@ -1,5 +1,7 @@
 package com.soulcraft.Data;
 
+import org.bukkit.plugin.RegisteredServiceProvider;
+
 import com.soulcraft.SCSettings;
 import com.soulcraft.Commands.Commands;
 import com.soulcraft.Event.EventsHandler;
@@ -73,7 +75,8 @@ public class SCSettingsManager {
 		
 		plugin.getLogger().info("Events Registeted!");
 		plugin.getLogger().info("Registering Extra Data...");
-		economy = plugin.getServer().getServicesManager().getRegistration(Economy.class).getProvider();
+		RegisteredServiceProvider<Economy> provider = plugin.getServer().getServicesManager().getRegistration(Economy.class);
+		economy = provider != null ? provider.getProvider() : null;
 		
 		for(String f : footer)
 		 plugin.getLogger().info(f);
