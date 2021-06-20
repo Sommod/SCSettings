@@ -1,0 +1,107 @@
+#####################
+# +---------------+ #
+# | BankNote Menu | #
+# +---------------+ #
+#####################
+
+# Handles the display and information found for
+# the BankNote menu. This menu is where players
+# will go to get banknotes that can be used to
+# send money.
+
+# Sets the name of the menu.
+name: '&2BankNotes'
+
+# Sets the size of the menu.
+size: 27
+
+# Creates either a border or fills all empty within the
+# menu of the given item.
+# fill type options => BORDER | FILL
+fill:
+  use: true
+  fill type: BORDER
+  item: GRAY_STAINED_GLASS_PANE
+  name: ' '
+  amount: 1
+  enchanted: false
+  lore:
+    - ' '
+
+# Sets the given slots of the inventory. These options
+# take priority over the fill/border option found within
+# the config.yml file. Meaning that the fill/border will
+# not replace the items found within this section.
+# [!] NOTE [!]
+# The '$' symbol MUST BE PRESENT!!!
+# This is how the plugin determines the amount the item
+# is meant to handle in terms of money value. This value
+# MUST be present within the NAME of the item. Lore is
+# optional.
+slots:
+  11:
+    item: PAPER
+    amount: 1
+    name: '&a$1,000'
+    lore:
+      - '&b1 Thousand'
+    enchanted: false
+  
+  12:
+    item: PAPER
+    amount: 1
+    name: '&a$10,000'
+    lore:
+      - '&b10 Thousand'
+    enchanted: false
+  
+  13:
+    item: PAPER
+    amount: 1
+    name: '&a$100,000'
+    lore:
+      - '&b100 Thousand'
+    enchanted: false
+  
+  14:
+    item: PAPER
+    amount: 1
+    name: '&a$1,000,000'
+    lore:
+      - '&b1 Million'
+    enchanted: false
+  
+  15:
+    item: PAPER
+    amount: 1
+    name: '&a$10,000,000'
+    lore:
+      - '&b10 Million'
+    enchanted: false
+  
+  16:
+    item: PAPER
+    amount: 1
+    name: '&a$100,000,000'
+    lore:
+      - '&b100 Million'
+    enchanted: false
+  
+  17:
+    item: PAPER
+    amount: 1
+    name: '&a$1,000,000,000'
+    lore:
+      - '&b1 Billion'
+    enchanted: false
+    
+  23:
+    item: NETHER_STAR
+    amount: 1
+    name: '&bBack to Main Menu'
+    lore:
+      - ' '
+    enchant: false
+    button: MAIN_MENU
+    
+# End Transmission...
