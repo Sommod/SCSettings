@@ -4,6 +4,9 @@
 # +--------------+ #
 ####################
 
+# Contains the information that handles
+# displaying friend information.
+
 # Sets the name of the menu.
 name: '&cFriends'
 
