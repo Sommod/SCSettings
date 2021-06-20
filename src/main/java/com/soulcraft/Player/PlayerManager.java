@@ -44,6 +44,11 @@ public class PlayerManager {
 		
 		if(folder.listFiles().length != 0)
 			initData(folder);
+		
+		for(OfflinePlayer check : manager.getPlugin().getServer().getOfflinePlayers()) {
+			if(!data.containsKey(check.getUniqueId()))
+				data.put(check.getUniqueId(), new PlayerData(check));
+		}
 	}
 	
 	// Grabs the data from the stored files folder
