@@ -23,13 +23,14 @@ public class MainMenu extends AbstractMenu {
 
 	@Override
 	public void open(Player player) {
-		if(isUsingFillOption() && !isBorder()) {
-			Inventory toOpen = getBaseInventory();
+		Inventory toOpen = getBaseInventory();
+		toOpen = getFilledInventory(toOpen);
+		
+		if(isUsingFillOption() && !isBorder())
 			toOpen = getFilledInventory(toOpen);
-			
-			player.closeInventory();
-			player.openInventory(toOpen);
-		}
+		
+		player.closeInventory();
+		player.openInventory(toOpen);
 	}
 
 }
