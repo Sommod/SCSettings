@@ -63,9 +63,9 @@ public class List extends CommandManger {
 			return;
 		}
 		
-		if(loc == 1)
+		if(loc == 0)
 			settings();
-		else if(loc == 2)
+		else if(loc == 1)
 			friends();
 		else
 			requests();
