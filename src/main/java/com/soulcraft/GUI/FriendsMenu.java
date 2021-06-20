@@ -64,7 +64,12 @@ public class FriendsMenu extends AbstractMenu {
 		}
 		
 		// Sets the player heads
-		for(int i = 0, k = (page * 28); i < getBaseInventory().getSize() && k < pData.getAllFriends().size(); i++) {
+		for(int i = 10, k = (page * 28); i < getBaseInventory().getSize() - 9 && k < pData.getAllFriends().size(); i++) {
+			if((i + 1) % 9 == 0) {
+				i++;
+				continue;
+			}
+			
 			ItemStack temp = head.clone();
 			SkullMeta meta = (SkullMeta) temp.getItemMeta();
 			
@@ -75,6 +80,7 @@ public class FriendsMenu extends AbstractMenu {
 			temp.setItemMeta(meta);
 			
 			player.getOpenInventory().getTopInventory().setItem(i, temp);
+			k++;
 		}
 		
 		if(isUsingFillOption() && !isBorder()) {
