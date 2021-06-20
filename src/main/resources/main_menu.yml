@@ -37,7 +37,7 @@ fill:
 # the config.yml file. Meaning that the fill/border will
 # not replace the items found within this section.
 slots:
-  12:
+  11:
     item: GOLD_INGOT
     amount: 1
     name: '&aFriends'
@@ -46,7 +46,7 @@ slots:
     enchant: false
     button: FRIENDS_MENU
     
-  14:
+  13:
     item: EMERALD
     amount: 1
     name: '&bAdd a friend'
@@ -55,7 +55,17 @@ slots:
     enchant: false
     button: ADD_MENU
     
-  16:
+  15:
+    item: DIAMOND
+    amount: 1
+    name: '&dCollect Gifts'
+    lore:
+      - '&7&oOpens the menu to collect any gifts that either.'
+      - '&7&owere sent or returned to you.
+    enchant: false
+    button: COLLECT_MENU
+    
+  17:
     item: PAPER
     amount: 1
     name: '&cSettings Menu'
