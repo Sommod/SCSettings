@@ -70,7 +70,7 @@ public class SettingsMenu extends AbstractMenu {
 		// Friend Join Notification
 		if(config.isConfigurationSection("items.friend join notify")) {
 			joinFriend = new ItemStack(Material.getMaterial(config.getString("items.friend join notify.item")), config.getInt("items.friend join notify.amount"));
-			meta = deathMessage.getItemMeta();
+			meta = joinFriend.getItemMeta();
 			
 			meta.setDisplayName(config.getString("items.friend join notify.name").replace('&', '§'));
 			config.getStringList("items.friend join notify.lore").forEach(line -> { lore.add(line.replace('&', '§')); });
@@ -84,8 +84,8 @@ public class SettingsMenu extends AbstractMenu {
 			
 			 joinFriend.setItemMeta(meta);
 		} else {
-			deathMessage = new ItemStack(Material.EMERALD, 1);
-			meta = deathMessage.getItemMeta();
+			joinFriend = new ItemStack(Material.EMERALD, 1);
+			meta = joinFriend.getItemMeta();
 			
 			meta.setDisplayName("§bToggle Friend Join Notification");
 			meta.setLore(Arrays.asList("§7Enable or Disable the messages of a friend joining the server."));
@@ -96,7 +96,7 @@ public class SettingsMenu extends AbstractMenu {
 		// Allow Friend Requests
 		if(config.isConfigurationSection("items.death messages")) {
 			allowRequests = new ItemStack(Material.getMaterial(config.getString("items.allow requests.item")), config.getInt("items.allow requests.amount"));
-			meta = deathMessage.getItemMeta();
+			meta = allowRequests.getItemMeta();
 			
 			meta.setDisplayName(config.getString("items.allow requests.name").replace('&', '§'));
 			config.getStringList("items.allow requests.lore").forEach(line -> { lore.add(line.replace('&', '§')); });
@@ -111,7 +111,7 @@ public class SettingsMenu extends AbstractMenu {
 			 allowRequests.setItemMeta(meta);
 		} else {
 			allowRequests = new ItemStack(Material.DIAMOND, 1);
-			meta = deathMessage.getItemMeta();
+			meta = allowRequests.getItemMeta();
 			
 			meta.setDisplayName("§bToggle Allow Friend Requests");
 			meta.setLore(Arrays.asList("§7Enable or Disable the ability for people to send you a friend request."));
@@ -122,7 +122,7 @@ public class SettingsMenu extends AbstractMenu {
 		// Ignore Chat
 		if(config.isConfigurationSection("items.ignore chat")) {
 			ignorechat = new ItemStack(Material.getMaterial(config.getString("items.ignore chat.item")), config.getInt("items.ignore chat.amount"));
-			meta = deathMessage.getItemMeta();
+			meta = ignorechat.getItemMeta();
 			
 			meta.setDisplayName(config.getString("items.ignore chat.name").replace('&', '§'));
 			config.getStringList("items.ignore chat.lore").forEach(line -> { lore.add(line.replace('&', '§')); });
@@ -137,7 +137,7 @@ public class SettingsMenu extends AbstractMenu {
 			 ignorechat.setItemMeta(meta);
 		} else {
 			ignorechat = new ItemStack(Material.PAPER, 1);
-			meta = deathMessage.getItemMeta();
+			meta = ignorechat.getItemMeta();
 			
 			meta.setDisplayName("§bToggle Ignore Global Chat");
 			meta.setLore(Arrays.asList("§7Enable or Disable the ability to see the Global Chat."));
@@ -159,16 +159,16 @@ public class SettingsMenu extends AbstractMenu {
 		toOpen.setItem(12, allowRequests);
 		toOpen.setItem(13, ignorechat);
 		
-		ItemStack display = new ItemStack(pData.getChatSettings().isSeeingDeathMessages() ? Material.GREEN_DYE : Material.GRAY_DYE);
+		ItemStack display = new ItemStack(pData.getChatSettings().isSeeingDeathMessages() ? Material.LIME_DYE : Material.GRAY_DYE);
 		toOpen.setItem(19, display);
 		
-		display = new ItemStack(pData.getChatSettings().isNotifiedFriendJoin() ? Material.GREEN_DYE : Material.GRAY_DYE);
+		display = new ItemStack(pData.getChatSettings().isNotifiedFriendJoin() ? Material.LIME_DYE : Material.GRAY_DYE);
 		toOpen.setItem(20, display);
 		
-		display = new ItemStack(pData.getChatSettings().isAllowingFriendRequest() ? Material.GREEN_DYE : Material.GRAY_DYE);
+		display = new ItemStack(pData.getChatSettings().isAllowingFriendRequest() ? Material.LIME_DYE : Material.GRAY_DYE);
 		toOpen.setItem(21, display);
 		
-		display = new ItemStack(pData.getChatSettings().isIgnoringGlobalChat() ? Material.GREEN_DYE : Material.GRAY_DYE);
+		display = new ItemStack(pData.getChatSettings().isIgnoringGlobalChat() ? Material.LIME_DYE : Material.GRAY_DYE);
 		toOpen.setItem(22, display);
 		
 		if(isUsingFillOption() && !isBorder())
