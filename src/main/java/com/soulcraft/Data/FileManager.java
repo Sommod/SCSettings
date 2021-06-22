@@ -47,6 +47,7 @@ public class FileManager {
 		loc.put("HELP", basePath + "/help.txt");
 		loc.put("DATA_FOLDER", basePath + "/Data");
 		loc.put("PLAYER_DATA", basePath + "/Data/Player Data");
+		loc.put("ITEM_DATA", basePath + "/Data/Item Data");
 		loc.put("GUI_DATA", basePath + "/Data/Gui Data");
 		loc.put("MAIN_MENU", basePath + "/Data/Gui Data/Main Menu.yml");
 		loc.put("ADD_FRIEND", basePath + "/Data/Gui Data/Add Friend.yml");
@@ -63,6 +64,7 @@ public class FileManager {
 		writeFile(null, getFile(loc.get("DATA_FOLDER")));
 		writeFile(null, getFile(loc.get("PLAYER_DATA")));
 		writeFile(null, getFile(loc.get("GUI_DATA")));
+		writeFile(null, getFile(loc.get("ITEM_DATA")));
 		writeFile(getStream("main_menu.yml"), getFile(loc.get("MAIN_MENU")));
 		writeFile(getStream("add_friend.yml"), getFile(loc.get("ADD_FRIEND")));
 		writeFile(getStream("friend_request.yml"), getFile(loc.get("FRIEND_REQUEST")));
@@ -160,6 +162,16 @@ public class FileManager {
 		case "player_folder":
 		case "player":
 			return "PLAYER_DATA";
+			
+		case "item data":
+		case "item_data":
+		case "items":
+		case "item":
+		case "data item":
+		case "data_item":
+		case "data items":
+		case "data_items":
+			return "ITEM_DATA";
 			
 		case "main menu":
 		case "main_menu":
