@@ -64,7 +64,7 @@ public class PlayerManager {
 			if(fileExt.equalsIgnoreCase("file")) {
 				try {
 					ObjectInputStream ois = new ObjectInputStream(new FileInputStream(playerDataFile));
-					data.put(UUID.fromString(playerDataFile.getName()), (PlayerData) ois.readObject());
+					data.put(UUID.fromString(playerDataFile.getName().substring(0, playerDataFile.getName().length() - 5)), (PlayerData) ois.readObject());
 					ois.close();
 				} catch (IOException | ClassNotFoundException e) {
 					manager.getPlugin().getLogger().log(Level.WARNING, "Error, could not load Player Data (" + playerDataFile.getName() + ").");
