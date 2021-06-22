@@ -32,6 +32,15 @@ fill:
 # not replace the items found within this section.
 slots:
   46:
+    item: ARROW
+    amount: 1
+    name: '&7&oPrevious Page'
+    lore:
+      - ' '
+    enchant: false
+    button: PREVIOUS_PAGE
+    
+  47:
     item: NETHER_STAR
     amount: 1
     name: '&bBack to Main Menu'
@@ -40,7 +49,7 @@ slots:
     enchant: false
     button: MAIN_MENU
   
-  47:
+  53:
     item: DIAMOND
     amount: 1
     name: '&6View Friend Requests'
@@ -49,15 +58,6 @@ slots:
       - '&7sent you a friend request'
     enchanted: false
     button: FRIEND_REQUEST_MENU
-    
-  53:
-    item: ARROW
-    amount: 1
-    name: '&7&oPrevious Page'
-    lore:
-      - ' '
-    enchant: false
-    button: PREVIOUS_PAGE
     
   54:
     item: ARROW
