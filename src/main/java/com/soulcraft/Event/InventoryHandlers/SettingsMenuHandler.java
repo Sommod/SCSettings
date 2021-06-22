@@ -1,6 +1,8 @@
 package com.soulcraft.Event.InventoryHandlers;
 
+import org.bukkit.Material;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.inventory.ItemStack;
 
 import com.soulcraft.Data.Perms;
 import com.soulcraft.Data.SCSettingsManager;
@@ -52,32 +54,41 @@ public class SettingsMenuHandler extends AbstractHandler<SettingsMenu> {
 							data.getChatSettings().setDeathMessages(!data.getChatSettings().isSeeingDeathMessages());
 					else
 						getPlayer().sendMessage(getManager().getFileManager().getConfig("config").getString("friend.no permission").replace('&', '§'));
-					return;
+					break;
 					
 				case 11:
 					if(getPlayer().hasPermission(Perms.FRIEND_JOIN.toString()))
 						data.getChatSettings().setNotifyFriendJoin(!data.getChatSettings().isNotifiedFriendJoin());
 					else
 						getPlayer().sendMessage(getManager().getFileManager().getConfig("config").getString("friend.no permission").replace('&', '§'));
-					return;
+					break;
 
 				case 12:
 					if(getPlayer().hasPermission(Perms.ALLOW_REQUESTS.toString()))
 						data.getChatSettings().setAllowFriendRequets(!data.getChatSettings().isAllowingFriendRequest());
 					else
 						getPlayer().sendMessage(getManager().getFileManager().getConfig("config").getString("friend.no permission").replace('&', '§'));
-					return;
+					break;
 					
 				case 13:
 					if(getPlayer().hasPermission(Perms.IGNORE_CHAT.toString()))
 						data.getChatSettings().setIgnoreGlobalChat(!data.getChatSettings().isIgnoringGlobalChat());
 					else
 						getPlayer().sendMessage(getManager().getFileManager().getConfig("config").getString("friend.no permission").replace('&', '§'));
-					return;
+					break;
 					
 				default:
 					return;
 				}
+				
+				ItemStack change = getEvent().getInventory().getItem(getEvent().getSlot() + 9);
+				
+				if(change.getType() == Material.GRAY_DYE)
+					change.setType(Material.LIME_DYE);
+				else
+					change.setType(Material.GRAY_DYE);
+				
+				getEvent().getInventory().setItem(getEvent().getSlot() + 9, change); // Does not check for ArrayOutOfBounds Exception... Beware
 			}
 		}
 	}
