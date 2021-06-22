@@ -96,8 +96,9 @@ public class ItemManager {
 		try {
 			File file = new File(manager.getPlugin().getDataFolder(), "Data/Item Data/Items.sc");
 			
-			if(!file.exists())
-				file.createNewFile();
+			if(file.exists())
+				file.delete();
+			file.createNewFile();
 			
 			ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file));
 			oos.writeObject(items);
