@@ -58,7 +58,7 @@ public class AddFriend extends AbstractMenu {
 			player.getOpenInventory().getTopInventory().setItem(i, null);
 		}
 		
-		for(int i = 10, k = ((page - 1) * 28); i < getBaseInventory().getSize() - 10 && k < allPlayers.size(); i++, k++) {
+		for(int i = 10, k = (page * 28); i < getBaseInventory().getSize() - 10 && k < allPlayers.size(); i++, k++) {
 			if((i + 1) % 9 == 0)
 				i += 2;
 			
